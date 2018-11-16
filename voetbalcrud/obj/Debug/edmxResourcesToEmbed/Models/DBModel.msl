@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MvcCrudModelStoreContainer" CdmEntityContainer="MvcCrudEntities1">
+    <EntitySetMapping Name="PlayersTable">
+      <EntityTypeMapping TypeName="MvcCrudModel.PlayersTable">
+        <MappingFragment StoreEntitySet="PlayersTable">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Attack" ColumnName="Attack" />
+          <ScalarProperty Name="Defend" ColumnName="Defend" />
+          <ScalarProperty Name="Midfield" ColumnName="Midfield" />
+          <ScalarProperty Name="Keep" ColumnName="Keep" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,74 @@
+﻿@model voetbalcrud.Models.PlayersTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlayersTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Defend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Defend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Midfield)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Midfield)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keep)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MvcCrudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PlayersTable">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Attack" Type="Int32" Nullable="false" />
+    <Property Name="Defend" Type="Int32" Nullable="false" />
+    <Property Name="Midfield" Type="Int32" Nullable="false" />
+    <Property Name="Keep" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MvcCrudEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PlayersTable" EntityType="Self.PlayersTable" />
+  </EntityContainer>
+</Schema>
