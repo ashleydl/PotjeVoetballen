@@ -33,27 +33,15 @@ namespace voetbalcrud.Controllers
             return View();
         }
 
-        [HttpPost]
-        public JsonResult AutoComplete(string prefix)
+        public ActionResult Teams()
         {
-            MvcCrudEntities1 entities = new MvcCrudEntities1();
-            var Players = (from PlayersTable in entities.PlayersTable
-                             where PlayersTable.PlayerName.StartsWith(prefix)
-                             select new
-                             {
-                                 label = PlayersTable.PlayerName,
-                                 val = PlayersTable.PlayerID
-                             }).ToList();
-
-            return Json(Players);
-        }
-
-        [HttpPost]
-        public ActionResult Index(string PlayerName, string PlayerId)
-        {
-            ViewBag.Message = "CustomerName: " + PlayerName + " CustomerId: " + PlayerId;
+            MvcCrudEntities1 mvcCrudEntity = new MvcCrudEntities1();
+            var getNameList = mvcCrudEntity.PlayersTable.ToList();
+            SelectList list = new SelectList(getNameList,"PlayerID", "PlayerName");
+            ViewBag.PlayerNameList = list;
             return View();
         }
+      
     }
 }
 
