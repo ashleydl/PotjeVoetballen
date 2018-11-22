@@ -1,16 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MvcCrudModelStoreContainer" CdmEntityContainer="MvcCrudEntities1">
-    <EntitySetMapping Name="PlayersTable">
-      <EntityTypeMapping TypeName="MvcCrudModel.PlayersTable">
-        <MappingFragment StoreEntitySet="PlayersTable">
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="MvcCrudModel.Player">
+        <MappingFragment StoreEntitySet="Player">
           <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Attack" ColumnName="Attack" />
-          <ScalarProperty Name="Defend" ColumnName="Defend" />
-          <ScalarProperty Name="Midfield" ColumnName="Midfield" />
-          <ScalarProperty Name="Keep" ColumnName="Keep" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlayerPositionStrengths">
+      <EntityTypeMapping TypeName="MvcCrudModel.PlayerPositionStrength">
+        <MappingFragment StoreEntitySet="PlayerPositionStrength">
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="MvcCrudModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Setups">
+      <EntityTypeMapping TypeName="MvcCrudModel.Setup">
+        <MappingFragment StoreEntitySet="Setup">
+          <ScalarProperty Name="SetupName" ColumnName="SetupName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="MvcCrudModel.Team">
+        <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamPartitions">
+      <EntityTypeMapping TypeName="MvcCrudModel.TeamPartition">
+        <MappingFragment StoreEntitySet="TeamPartition">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamPlayers">
+      <EntityTypeMapping TypeName="MvcCrudModel.TeamPlayer">
+        <MappingFragment StoreEntitySet="TeamPlayer">
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

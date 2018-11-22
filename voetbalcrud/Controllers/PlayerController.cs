@@ -10,12 +10,14 @@ namespace voetbalcrud.Controllers
 {
     public class PlayerController : Controller
     {
+
         // GET: Player/Index
         public ActionResult Index()
         {
             using (MvcCrudEntities1 db = new MvcCrudEntities1())
-
-                return View(db.PlayersTable.ToList());
+            {
+                return View(db.Players.ToList());
+            }
         }
 
         // GET: Player/Details/5
@@ -23,7 +25,7 @@ namespace voetbalcrud.Controllers
         {
             using (MvcCrudEntities1 db = new MvcCrudEntities1())
             {
-                return View(db.PlayersTable.Where(x => x.PlayerID == id).FirstOrDefault()); ;
+                return View(db.Players.Where(x => x.ID == id).FirstOrDefault()); ;
             }
         }
 
@@ -36,17 +38,17 @@ namespace voetbalcrud.Controllers
 
         // POST: Player/Create
         [HttpPost]
-        public ActionResult Create(PlayersTable playerstable)
+        public ActionResult Create(Player player)
         {
             try
             {
                 // TODO: Add insert logic here
-                using (MvcCrudEntities1 db = new MvcCrudEntities1() )
+                using (MvcCrudEntities1 db = new MvcCrudEntities1())
                 {
-                    db.PlayersTable.Add(playerstable);
+                    db.Players.Add(player);
                     db.SaveChanges();
                 }
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -59,13 +61,13 @@ namespace voetbalcrud.Controllers
         {
             using (MvcCrudEntities1 db = new MvcCrudEntities1())
             {
-                return View(db.PlayersTable.Where(x => x.PlayerID == id).FirstOrDefault()); ;
+                return View(db.Players.Where(x => x.ID == id).FirstOrDefault()); ;
             }
         }
 
         // POST: Player/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, PlayersTable playertable)
+        public ActionResult Edit(int id, Player player)
         {
             try
             {
@@ -73,11 +75,11 @@ namespace voetbalcrud.Controllers
                 using (MvcCrudEntities1 db = new MvcCrudEntities1())
 
                 {
-                   
+
                     db.SaveChanges();
 
-                        }
-                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -88,7 +90,7 @@ namespace voetbalcrud.Controllers
         // GET: Player/Delete/5
         public ActionResult Delete(int id)
         {
-         
+
             {
                 return View();
             }
@@ -96,18 +98,21 @@ namespace voetbalcrud.Controllers
 
         // POST: Player/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, PlayersTable playertable)
+        public ActionResult Delete(int id, Player player)
         {
             try
             {
                 // TODO: Add delete logic here
                 using (MvcCrudEntities1 db = new MvcCrudEntities1())
                 {
-                    playertable = db.PlayersTable.Where(x => x.PlayerID == id).FirstOrDefault();
-                    db.PlayersTable.Remove(playertable);
-                    db.SaveChanges();
+                    player = db.Players.Where(x => x.ID == id).FirstOrDefault();
+                    if (player != null)
+                    {
+                        db.Players.Remove(player);
+                        db.SaveChanges();
+                    }
                 }
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {

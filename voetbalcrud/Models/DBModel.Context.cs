@@ -25,6 +25,12 @@ namespace voetbalcrud.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<PlayersTable> PlayersTable { get; set; }
+        public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<PlayerPositionStrength> PlayerPositionStrengths { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Setup> Setups { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<TeamPartition> TeamPartitions { get; set; }
+        public virtual DbSet<TeamPlayer> TeamPlayers { get; set; }
     }
 }

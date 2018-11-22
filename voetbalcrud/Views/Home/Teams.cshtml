@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/js/site.js"></script>
+
 </head>
 <h2>Maak je eigen teams</h2>
 
@@ -52,16 +53,19 @@
                         </li>
                     </ul>
                 </div>
-                <form role="form">
+                <form method="post">
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="step1">
                             <h3>Stap 1</h3>
                             <p>Kies aantal spelers</p>
-                            <label for="CompanyName">Aantal spelers</label>
-                            <input type="text" name="CompanyName"
-                                   value="@Request.Form["AantalSpelers"]" />
-                            @Html.ValidationMessage("AantalSpelers")
-                            Validation.Add("credits", Validator.Integer("Credits must be an integer"));
+                            @Html.ValidationSummary()
+                            <div>
+                                <label for="AantalSpelers">Aantal spelers: </label>
+                                <input type="text"
+                                       name="AantalSpelers"
+                                       value="@Request["AantalSpelers"]" />
+                                @Html.ValidationMessage("AantalSpelers")
+                            </div>
                             <ul class="list-inline pull-right">
                                 <li><button type="button" class="btn btn-primary next-step">Volgende</button></li>
                             </ul>
@@ -71,6 +75,7 @@
                             <ul class="list-inline pull-right">
                                 <label>Speler 1</label>
                                 @Html.DropDownList("getNameList", ViewBag.PlayerNameList as SelectList, "Selecteer een speler")
+                                    @Html.ValidationMessage("coursename")
                                 <li><button type="button" class="btn btn-default prev-step">Vorige</button></li>
                                 <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                             </ul>
@@ -95,41 +100,42 @@
     </div>
 </div>
 
-@*Javascript voor tabs*@
-<script>
-    $(document).ready(function () {
-        //Initialize tooltips
-        $('.nav-tabs > li a[title]').tooltip();
 
-        //Wizard
-        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+    @*Javascript voor tabs*@
+    <script>
+        $(document).ready(function () {
+            //Initialize tooltips
+            $('.nav-tabs > li a[title]').tooltip();
 
-            var $target = $(e.target);
+            //Wizard
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
-            if ($target.parent().hasClass('disabled')) {
-                return false;
-            }
+                var $target = $(e.target);
+
+                if ($target.parent().hasClass('disabled')) {
+                    return false;
+                }
+            });
+
+            $(".next-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                $active.next().removeClass('disabled');
+                nextTab($active);
+
+            });
+            $(".prev-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                prevTab($active);
+
+            });
         });
 
-        $(".next-step").click(function (e) {
-
-            var $active = $('.wizard .nav-tabs li.active');
-            $active.next().removeClass('disabled');
-            nextTab($active);
-
-        });
-        $(".prev-step").click(function (e) {
-
-            var $active = $('.wizard .nav-tabs li.active');
-            prevTab($active);
-
-        });
-    });
-
-    function nextTab(elem) {
-        $(elem).next().find('a[data-toggle="tab"]').click();
-    }
-    function prevTab(elem) {
-        $(elem).prev().find('a[data-toggle="tab"]').click();
-    }
-</script>
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+    </script>
