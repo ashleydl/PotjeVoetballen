@@ -37,9 +37,10 @@ namespace voetbalcrud.Controllers
         {
             MvcCrudEntities1 mvcCrudEntity = new MvcCrudEntities1();
             var getNameList = mvcCrudEntity.Players.ToList();
-            SelectList list = new SelectList(getNameList,"PlayerID", "PlayerName");
+            SelectList list = new SelectList(getNameList,"ID", "PlayerName");
             ViewBag.PlayerNameList = list;
             return View();
+
         }
       
     }
