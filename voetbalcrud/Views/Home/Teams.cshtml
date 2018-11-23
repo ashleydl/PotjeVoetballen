@@ -22,6 +22,7 @@
             <div class="wizard">
                 <div class="wizard-inner">
                     <div class="connecting-line"></div>
+                    @*Stap 1 - Aantal spelers vragen*@
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="Aantal spelers" class="active">
                             <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Stap 1">
@@ -31,20 +32,23 @@
                                 </span>
                             </a>
                         </li>
+                        @*Stap 2 - Spelernamen doorgeven uit database*@
                         <li role="presentation" class="disabled">
-                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Stap 2">
                                 <span class="round-tab">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </span>
                             </a>
                         </li>
+                        @*Stap 3 - Vragen hoeveel spelers per positie*@
                         <li role="presentation" class="disabled">
-                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Stap 3">
                                 <span class="round-tab">
                                     <i class="glyphicon glyphicon-picture"></i>
                                 </span>
                             </a>
                         </li>
+                        @*Stap 4 - Uitrekenen*@
                         <li role="presentation" class="disabled">
                             <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
                                 <span class="round-tab">
@@ -75,12 +79,18 @@
                         <div class="tab-pane" role="tabpanel" id="step2">
                             <h3>Stap 2</h3>
                             <ul class="list-inline pull-right">
+                                <div id="playerinputcontainer"></div>
+
+
                                 <label id="GetNameList">Speler 1</label>
-                                @Html.DropDownList("getNameList", ViewBag.PlayerNameList as SelectList, "Selecteer een speler")
+                                <div class="input_fields_container">
+
+                                    @Html.DropDownList("getNameList", ViewBag.PlayerNameList as SelectList, "Selecteer een speler")
                                     @Html.ValidationMessage("coursename")
 
-                                <li><button type="button" class="btn btn-default prev-step">Vorige</button></li>
-                                <li><button type="button" class="btn btn-primary next-step">Volgende</button></li>
+
+                                    <li><button type="button" class="btn btn-default prev-step">Vorige</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Volgende</button></li>
                             </ul>
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step3">
@@ -96,66 +106,65 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-
-
-                    <div id="playerinputcontainer"></div>
                 </form>
             </div>
         </section>
     </div>
 </div>
 
+@*Javascript voor tabs*@
+<script>
+    $(document).ready(function () {
+        //Initialize tooltips
+        $('.nav-tabs > li a[title]').tooltip();
 
-    @*Javascript voor tabs*@
-    <script>
-        $(document).ready(function () {
-            //Initialize tooltips
-            $('.nav-tabs > li a[title]').tooltip();
+        //Wizard
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
-            //Wizard
-            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            var $target = $(e.target);
 
-                var $target = $(e.target);
-
-                if ($target.parent().hasClass('disabled')) {
-                    return false;
-                }
-            });
-
-            $(".next-step").click(function (e) {
-
-                var $active = $('.wizard .nav-tabs li.active');
-                $active.next().removeClass('disabled');
-                nextTab($active);
-
-            });
-            $(".prev-step").click(function (e) {
-
-                var $active = $('.wizard .nav-tabs li.active');
-                prevTab($active);
-
-            });
-
-            $("#AantalSpelers").change(function (){
-                var aantal = $(this).val();
-                $("#playerinputcontainer").empty();
-                $("#playerinputcontainer").append('<table>');
-
-                $("#playerinputcontainer").append('<tr><th>Speler</th><th>Naam</th></tr>');
-
-                for (var i = 0; i < aantal; i++) {
-                    $("#playerinputcontainer").append('Speler ' + (i + 1));
-                    $("#playerinputcontainer").append("<input type=text></input>");
-                }
-                $("#playerinputcontainer").append('</table>');
-            });
-
+            if ($target.parent().hasClass('disabled')) {
+                return false;
+            }
         });
 
-        function nextTab(elem) {
-            $(elem).next().find('a[data-toggle="tab"]').click();
+        $("#AantalSpelers").change(function () {
+            CreateEditPlayers(this);
+        });
+    });
+
+    function CreateEditPlayers(obj) {
+        var aantal = $(obj).val();
+        $("#playerinputcontainer").empty();
+        $("#playerinputcontainer").append('<table>');
+
+        $("#playerinputcontainer").append('<tr><th>Speler</th><th>Naam</th></tr>');
+
+        for (var i = 0; i < aantal; i++) {
+            $("#playerinputcontainer").append('Speler ' + (i + 1));
+            $("#playerinputcontainer").append("<input type=text></input>");
         }
-        function prevTab(elem) {
-            $(elem).prev().find('a[data-toggle="tab"]').click();
-        }
-    </script>
+        $("#playerinputcontainer").append('</table>');
+
+
+    }
+
+    $(".next-step").click(function (e) {
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+    });
+
+    $(".prev-step").click(function (e) {
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+    });
+
+    function nextTab(elem) {
+        $(elem).next().find('a[data-toggle="tab"]').click();
+    }
+
+    function prevTab(elem) {
+        $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+</script>

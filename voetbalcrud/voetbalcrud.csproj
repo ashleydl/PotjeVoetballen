@@ -198,6 +198,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pvws.asmx.cs">
+      <DependentUpon>pvws.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -207,6 +211,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="pvws.asmx" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\css\base\images\animated-overlay.gif" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\css\base\images\ui-icons_444444_256x240.png" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\css\base\images\ui-icons_555555_256x240.png" />
