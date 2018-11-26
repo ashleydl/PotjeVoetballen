@@ -197,6 +197,7 @@
       <DependentUpon>PlayersService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Positions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="pvws.asmx.cs">
       <DependentUpon>pvws.asmx</DependentUpon>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using voetbalcrud.Models;
+using System.Configuration;
 
 namespace voetbalcrud
 {
@@ -21,7 +22,8 @@ namespace voetbalcrud
 
         [WebMethod]
         public string GetAllPlayers()
-        {
+        { 
+ 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             using (MvcCrudEntities1 db = new MvcCrudEntities1())
             {

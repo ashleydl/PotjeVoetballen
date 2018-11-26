@@ -23,8 +23,7 @@ namespace voetbalcrud.Models
         public int ID { get; set; }
         public int SetupID { get; set; }
         public string TeamName { get; set; }
-        public string Step1 { get; set; }
-
+    
         public virtual Setup Setup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeamPlayer> TeamPlayers { get; set; }
