@@ -18,8 +18,8 @@ namespace voetbalcrud.Models
         public Position()
         {
             this.PlayerPositionStrengths = new HashSet<PlayerPositionStrength>();
-            this.TeamPartitions = new HashSet<TeamPartition>();
             this.TeamPlayers = new HashSet<TeamPlayer>();
+            this.TeamPartitions = new HashSet<TeamPartition>();
         }
     
         public int ID { get; set; }
@@ -28,8 +28,8 @@ namespace voetbalcrud.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlayerPositionStrength> PlayerPositionStrengths { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamPartition> TeamPartitions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeamPlayer> TeamPlayers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamPartition> TeamPartitions { get; set; }
     }
 }

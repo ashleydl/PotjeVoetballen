@@ -1,63 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MvcCrudModelStoreContainer" CdmEntityContainer="MvcCrudEntities1">
+  <EntityContainerMapping StorageEntityContainer="PotjeVoetballenDBModelStoreContainer" CdmEntityContainer="PotjeVoetballenDBEntities">
     <EntitySetMapping Name="Players">
-      <EntityTypeMapping TypeName="MvcCrudModel.Player">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Player">
         <MappingFragment StoreEntitySet="Player">
-          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PlayerPositionStrengths">
-      <EntityTypeMapping TypeName="MvcCrudModel.PlayerPositionStrength">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.PlayerPositionStrength">
         <MappingFragment StoreEntitySet="PlayerPositionStrength">
-          <ScalarProperty Name="Strength" ColumnName="Strength" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
           <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Positions">
-      <EntityTypeMapping TypeName="MvcCrudModel.Position">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Position">
         <MappingFragment StoreEntitySet="Position">
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Setups">
-      <EntityTypeMapping TypeName="MvcCrudModel.Setup">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Setup">
         <MappingFragment StoreEntitySet="Setup">
-          <ScalarProperty Name="SetupName" ColumnName="SetupName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SetupName" ColumnName="SetupName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Teams">
-      <EntityTypeMapping TypeName="MvcCrudModel.Team">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Team">
         <MappingFragment StoreEntitySet="Team">
-          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
-          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TeamPartitions">
-      <EntityTypeMapping TypeName="MvcCrudModel.TeamPartition">
-        <MappingFragment StoreEntitySet="TeamPartition">
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="SetupID" ColumnName="SetupID" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TeamPlayers">
-      <EntityTypeMapping TypeName="MvcCrudModel.TeamPlayer">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPlayer">
         <MappingFragment StoreEntitySet="TeamPlayer">
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
           <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamPartitions">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPartition">
+        <MappingFragment StoreEntitySet="TeamPartition">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -13,7 +13,7 @@ namespace voetbalcrud.Controllers
         // GET: Player/Index
         public ActionResult Index()
         {
-            using (MvcCrudEntities1 db = new MvcCrudEntities1())
+            using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
             {
                 return View(db.Players.ToList());
             }
@@ -22,7 +22,7 @@ namespace voetbalcrud.Controllers
         // GET: Player/Details/5
         public ActionResult Details(int id)
         {
-            using (MvcCrudEntities1 db = new MvcCrudEntities1())
+            using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
             {
                 return View(db.Players.Where(x => x.ID == id).FirstOrDefault()); ;
             }
@@ -37,14 +37,18 @@ namespace voetbalcrud.Controllers
 
         // POST: Player/Create
         [HttpPost]
-        public ActionResult Create(Player player, Position position)
+        public ActionResult Create(Player player, Position position, List<PlayerPositionStrength> strength)
         {
 
             try
             {
                 // TODO: Add insert logic here
-                using (MvcCrudEntities1 db = new MvcCrudEntities1())
+                using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
                 {
+                    foreach (var item in strength)
+                    {
+                        player.PlayerPositionStrengths.Add(item);
+                    }
                     db.Players.Add(player);
                     db.Positions.Add(position);
                     db.SaveChanges();
@@ -60,7 +64,7 @@ namespace voetbalcrud.Controllers
         // GET: Player/Edit/5
         public ActionResult Edit(int id)
         {
-            using (MvcCrudEntities1 db = new MvcCrudEntities1())
+            using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
             {
                 return View(db.Players.Where(x => x.ID == id).FirstOrDefault()); ;
             }
@@ -73,7 +77,7 @@ namespace voetbalcrud.Controllers
             try
             {
                 // TODO: Add update logic here
-                using (MvcCrudEntities1 db = new MvcCrudEntities1())
+                using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
 
                 {
 
@@ -104,7 +108,7 @@ namespace voetbalcrud.Controllers
             try
             {
                 // TODO: Add delete logic here
-                using (MvcCrudEntities1 db = new MvcCrudEntities1())
+                using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
                 {
                     player = db.Players.Where(x => x.ID == id).FirstOrDefault();
                     if (player != null)

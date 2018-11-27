@@ -17,7 +17,9 @@ namespace voetbalcrud
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
      [System.Web.Script.Services.ScriptService]
+#pragma warning disable IDE1006 // Naming Styles
     public class pvws : System.Web.Services.WebService
+#pragma warning restore IDE1006 // Naming Styles
     {
 
         [WebMethod]
@@ -25,7 +27,7 @@ namespace voetbalcrud
         { 
  
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            using (MvcCrudEntities1 db = new MvcCrudEntities1())
+            using (PotjeVoetballenDBEntities db = new PotjeVoetballenDBEntities())
             {
                 var items = db.Players.Select(_ => new { _.ID, _.PlayerName }).ToList();
                 return serializer.Serialize(items);

@@ -213,6 +213,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="pvws.asmx" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\css\base\images\animated-overlay.gif" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\css\base\images\ui-icons_444444_256x240.png" />
@@ -347,29 +357,11 @@
     <Content Include="Scripts\jquery-ui-1.10.4.custom\js\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\js\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\js\jquery-ui-1.10.4.custom.min.js" />
-    <Content Include="Models\DBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
-    </Content>
     <Content Include="PlayersService.asmx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\DBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\jquery-ui-1.10.4.custom\development-bundle\package.json" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\development-bundle\README.md" />
@@ -378,6 +370,13 @@
     <Content Include="Scripts\jquery-ui-1.10.4.custom\development-bundle\ui.menu.jquery.json" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\development-bundle\ui.position.jquery.json" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom\development-bundle\ui.widget.jquery.json" />
+    <EntityDeploy Include="Models\DBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBModel.edmx.diagram">
+      <DependentUpon>DBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

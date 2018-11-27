@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MvcCrudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PotjeVoetballenDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Player">
           <Key>
             <PropertyRef Name="ID" />
@@ -158,7 +158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MvcCrudModelStoreContainer">
+        <EntityContainer Name="PotjeVoetballenDBModelStoreContainer">
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlayerPositionStrength" EntityType="Self.PlayerPositionStrength" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
@@ -202,56 +202,15 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MvcCrudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="MvcCrudEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Players" EntityType="MvcCrudModel.Player" />
-          <EntitySet Name="PlayerPositionStrengths" EntityType="MvcCrudModel.PlayerPositionStrength" />
-          <AssociationSet Name="FK_PlayerPositionStrength_Player" Association="MvcCrudModel.FK_PlayerPositionStrength_Player">
-            <End Role="Player" EntitySet="Players" />
-            <End Role="PlayerPositionStrength" EntitySet="PlayerPositionStrengths" />
-          </AssociationSet>
-          <EntitySet Name="Positions" EntityType="MvcCrudModel.Position" />
-          <EntitySet Name="Setups" EntityType="MvcCrudModel.Setup" />
-          <EntitySet Name="Teams" EntityType="MvcCrudModel.Team" />
-          <EntitySet Name="TeamPartitions" EntityType="MvcCrudModel.TeamPartition" />
-          <EntitySet Name="TeamPlayers" EntityType="MvcCrudModel.TeamPlayer" />
-          <AssociationSet Name="FK_TeamPlayer_Player" Association="MvcCrudModel.FK_TeamPlayer_Player">
-            <End Role="Player" EntitySet="Players" />
-            <End Role="TeamPlayer" EntitySet="TeamPlayers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PlayerPositionStrength_Position" Association="MvcCrudModel.FK_PlayerPositionStrength_Position">
-            <End Role="Position" EntitySet="Positions" />
-            <End Role="PlayerPositionStrength" EntitySet="PlayerPositionStrengths" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeamPartition_Position" Association="MvcCrudModel.FK_TeamPartition_Position">
-            <End Role="Position" EntitySet="Positions" />
-            <End Role="TeamPartition" EntitySet="TeamPartitions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeamPlayer_Position" Association="MvcCrudModel.FK_TeamPlayer_Position">
-            <End Role="Position" EntitySet="Positions" />
-            <End Role="TeamPlayer" EntitySet="TeamPlayers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Team_Setup" Association="MvcCrudModel.FK_Team_Setup">
-            <End Role="Setup" EntitySet="Setups" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeamPartition_Setup" Association="MvcCrudModel.FK_TeamPartition_Setup">
-            <End Role="Setup" EntitySet="Setups" />
-            <End Role="TeamPartition" EntitySet="TeamPartitions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TeamPlayer_Team" Association="MvcCrudModel.FK_TeamPlayer_Team">
-            <End Role="Team" EntitySet="Teams" />
-            <End Role="TeamPlayer" EntitySet="TeamPlayers" />
-          </AssociationSet>
-          </EntityContainer>
+      <Schema Namespace="PotjeVoetballenDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Player">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlayerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PlayerPositionStrengths" Relationship="MvcCrudModel.FK_PlayerPositionStrength_Player" FromRole="Player" ToRole="PlayerPositionStrength" />
-          <NavigationProperty Name="TeamPlayers" Relationship="MvcCrudModel.FK_TeamPlayer_Player" FromRole="Player" ToRole="TeamPlayer" />
+          <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PlayerPositionStrengths" Relationship="Self.FK_PlayerPositionStrength_Player" FromRole="Player" ToRole="PlayerPositionStrength" />
+          <NavigationProperty Name="TeamPlayers" Relationship="Self.FK_TeamPlayer_Player" FromRole="Player" ToRole="TeamPlayer" />
         </EntityType>
         <EntityType Name="PlayerPositionStrength">
           <Key>
@@ -261,39 +220,27 @@
           <Property Name="PlayerID" Type="Int32" Nullable="false" />
           <Property Name="PositionID" Type="Int32" Nullable="false" />
           <Property Name="Strength" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Player" Relationship="MvcCrudModel.FK_PlayerPositionStrength_Player" FromRole="PlayerPositionStrength" ToRole="Player" />
-          <NavigationProperty Name="Position" Relationship="MvcCrudModel.FK_PlayerPositionStrength_Position" FromRole="PlayerPositionStrength" ToRole="Position" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_PlayerPositionStrength_Player" FromRole="PlayerPositionStrength" ToRole="Player" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_PlayerPositionStrength_Position" FromRole="PlayerPositionStrength" ToRole="Position" />
         </EntityType>
-        <Association Name="FK_PlayerPositionStrength_Player">
-          <End Type="MvcCrudModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="MvcCrudModel.PlayerPositionStrength" Role="PlayerPositionStrength" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PlayerPositionStrength">
-              <PropertyRef Name="PlayerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PlayerPositionStrengths" Relationship="MvcCrudModel.FK_PlayerPositionStrength_Position" FromRole="Position" ToRole="PlayerPositionStrength" />
-          <NavigationProperty Name="TeamPartitions" Relationship="MvcCrudModel.FK_TeamPartition_Position" FromRole="Position" ToRole="TeamPartition" />
-          <NavigationProperty Name="TeamPlayers" Relationship="MvcCrudModel.FK_TeamPlayer_Position" FromRole="Position" ToRole="TeamPlayer" />
+          <NavigationProperty Name="PlayerPositionStrengths" Relationship="Self.FK_PlayerPositionStrength_Position" FromRole="Position" ToRole="PlayerPositionStrength" />
+          <NavigationProperty Name="TeamPlayers" Relationship="Self.FK_TeamPlayer_Position" FromRole="Position" ToRole="TeamPlayer" />
+          <NavigationProperty Name="TeamPartitions" Relationship="PotjeVoetballenDBModel.FK_TeamPartition_Position" FromRole="Position" ToRole="TeamPartition" />
         </EntityType>
         <EntityType Name="Setup">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="SetupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Teams" Relationship="MvcCrudModel.FK_Team_Setup" FromRole="Setup" ToRole="Team" />
-          <NavigationProperty Name="TeamPartitions" Relationship="MvcCrudModel.FK_TeamPartition_Setup" FromRole="Setup" ToRole="TeamPartition" />
+          <Property Name="SetupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK_Team_Setup" FromRole="Setup" ToRole="Team" />
+          <NavigationProperty Name="TeamPartitions" Relationship="PotjeVoetballenDBModel.FK_TeamPartition_Setup" FromRole="Setup" ToRole="TeamPartition" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -301,20 +248,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="SetupID" Type="Int32" Nullable="false" />
-          <Property Name="TeamName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Setup" Relationship="MvcCrudModel.FK_Team_Setup" FromRole="Team" ToRole="Setup" />
-          <NavigationProperty Name="TeamPlayers" Relationship="MvcCrudModel.FK_TeamPlayer_Team" FromRole="Team" ToRole="TeamPlayer" />
-        </EntityType>
-        <EntityType Name="TeamPartition">
-          <Key>
-            <PropertyRef Name="PositionID" />
-            <PropertyRef Name="SetupID" />
-          </Key>
-          <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <Property Name="SetupID" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Position" Relationship="MvcCrudModel.FK_TeamPartition_Position" FromRole="TeamPartition" ToRole="Position" />
-          <NavigationProperty Name="Setup" Relationship="MvcCrudModel.FK_TeamPartition_Setup" FromRole="TeamPartition" ToRole="Setup" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Setup" Relationship="Self.FK_Team_Setup" FromRole="Team" ToRole="Setup" />
+          <NavigationProperty Name="TeamPlayers" Relationship="Self.FK_TeamPlayer_Team" FromRole="Team" ToRole="TeamPlayer" />
         </EntityType>
         <EntityType Name="TeamPlayer">
           <Key>
@@ -325,13 +261,25 @@
           <Property Name="TeamID" Type="Int32" Nullable="false" />
           <Property Name="PlayerID" Type="Int32" Nullable="false" />
           <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Player" Relationship="MvcCrudModel.FK_TeamPlayer_Player" FromRole="TeamPlayer" ToRole="Player" />
-          <NavigationProperty Name="Position" Relationship="MvcCrudModel.FK_TeamPlayer_Position" FromRole="TeamPlayer" ToRole="Position" />
-          <NavigationProperty Name="Team" Relationship="MvcCrudModel.FK_TeamPlayer_Team" FromRole="TeamPlayer" ToRole="Team" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_TeamPlayer_Player" FromRole="TeamPlayer" ToRole="Player" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_TeamPlayer_Position" FromRole="TeamPlayer" ToRole="Position" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_TeamPlayer_Team" FromRole="TeamPlayer" ToRole="Team" />
         </EntityType>
+        <Association Name="FK_PlayerPositionStrength_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="PlayerPositionStrength" Type="Self.PlayerPositionStrength" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PlayerPositionStrength">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TeamPlayer_Player">
-          <End Type="MvcCrudModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="MvcCrudModel.TeamPlayer" Role="TeamPlayer" Multiplicity="*" />
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
               <PropertyRef Name="ID" />
@@ -342,8 +290,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PlayerPositionStrength_Position">
-          <End Type="MvcCrudModel.Position" Role="Position" Multiplicity="1" />
-          <End Type="MvcCrudModel.PlayerPositionStrength" Role="PlayerPositionStrength" Multiplicity="*" />
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="PlayerPositionStrength" Type="Self.PlayerPositionStrength" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Position">
               <PropertyRef Name="ID" />
@@ -353,21 +301,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeamPartition_Position">
-          <End Type="MvcCrudModel.Position" Role="Position" Multiplicity="1" />
-          <End Type="MvcCrudModel.TeamPartition" Role="TeamPartition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Position">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TeamPartition">
-              <PropertyRef Name="PositionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeamPlayer_Position">
-          <End Type="MvcCrudModel.Position" Role="Position" Multiplicity="1" />
-          <End Type="MvcCrudModel.TeamPlayer" Role="TeamPlayer" Multiplicity="*" />
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Position">
               <PropertyRef Name="ID" />
@@ -378,8 +314,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Team_Setup">
-          <End Type="MvcCrudModel.Setup" Role="Setup" Multiplicity="1" />
-          <End Type="MvcCrudModel.Team" Role="Team" Multiplicity="*" />
+          <End Role="Setup" Type="Self.Setup" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Setup">
               <PropertyRef Name="ID" />
@@ -389,21 +325,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeamPartition_Setup">
-          <End Type="MvcCrudModel.Setup" Role="Setup" Multiplicity="1" />
-          <End Type="MvcCrudModel.TeamPartition" Role="TeamPartition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Setup">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TeamPartition">
-              <PropertyRef Name="SetupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeamPlayer_Team">
-          <End Type="MvcCrudModel.Team" Role="Team" Multiplicity="1" />
-          <End Type="MvcCrudModel.TeamPlayer" Role="TeamPlayer" Multiplicity="*" />
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
               <PropertyRef Name="ID" />
@@ -413,56 +337,141 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="PotjeVoetballenDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="PlayerPositionStrengths" EntityType="Self.PlayerPositionStrength" />
+          <EntitySet Name="Positions" EntityType="Self.Position" />
+          <EntitySet Name="Setups" EntityType="Self.Setup" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="TeamPlayers" EntityType="Self.TeamPlayer" />
+          <AssociationSet Name="FK_PlayerPositionStrength_Player" Association="Self.FK_PlayerPositionStrength_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="PlayerPositionStrength" EntitySet="PlayerPositionStrengths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Player" Association="Self.FK_TeamPlayer_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerPositionStrength_Position" Association="Self.FK_PlayerPositionStrength_Position">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="PlayerPositionStrength" EntitySet="PlayerPositionStrengths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Position" Association="Self.FK_TeamPlayer_Position">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_Setup" Association="Self.FK_Team_Setup">
+            <End Role="Setup" EntitySet="Setups" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Team" Association="Self.FK_TeamPlayer_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <EntitySet Name="TeamPartitions" EntityType="PotjeVoetballenDBModel.TeamPartition" />
+          <AssociationSet Name="FK_TeamPartition_Position" Association="PotjeVoetballenDBModel.FK_TeamPartition_Position">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="TeamPartition" EntitySet="TeamPartitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPartition_Setup" Association="PotjeVoetballenDBModel.FK_TeamPartition_Setup">
+            <End Role="Setup" EntitySet="Setups" />
+            <End Role="TeamPartition" EntitySet="TeamPartitions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TeamPartition">
+          <Key>
+            <PropertyRef Name="PositionID" />
+            <PropertyRef Name="SetupID" />
+          </Key>
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="SetupID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="PotjeVoetballenDBModel.FK_TeamPartition_Position" FromRole="TeamPartition" ToRole="Position" />
+          <NavigationProperty Name="Setup" Relationship="PotjeVoetballenDBModel.FK_TeamPartition_Setup" FromRole="TeamPartition" ToRole="Setup" />
+        </EntityType>
+        <Association Name="FK_TeamPartition_Position">
+          <End Type="PotjeVoetballenDBModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="PotjeVoetballenDBModel.TeamPartition" Role="TeamPartition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TeamPartition">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPartition_Setup">
+          <End Type="PotjeVoetballenDBModel.Setup" Role="Setup" Multiplicity="1" />
+          <End Type="PotjeVoetballenDBModel.TeamPartition" Role="TeamPartition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Setup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TeamPartition">
+              <PropertyRef Name="SetupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MvcCrudModelStoreContainer" CdmEntityContainer="MvcCrudEntities1">
+        <EntityContainerMapping StorageEntityContainer="PotjeVoetballenDBModelStoreContainer" CdmEntityContainer="PotjeVoetballenDBEntities">
           <EntitySetMapping Name="Players">
-            <EntityTypeMapping TypeName="MvcCrudModel.Player">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Player">
               <MappingFragment StoreEntitySet="Player">
-                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlayerPositionStrengths">
-            <EntityTypeMapping TypeName="MvcCrudModel.PlayerPositionStrength">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.PlayerPositionStrength">
               <MappingFragment StoreEntitySet="PlayerPositionStrength">
-                <ScalarProperty Name="Strength" ColumnName="Strength" />
-                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
                 <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Positions">
-            <EntityTypeMapping TypeName="MvcCrudModel.Position">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Position">
               <MappingFragment StoreEntitySet="Position">
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Setups">
-            <EntityTypeMapping TypeName="MvcCrudModel.Setup">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Setup">
               <MappingFragment StoreEntitySet="Setup">
-                <ScalarProperty Name="SetupName" ColumnName="SetupName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SetupName" ColumnName="SetupName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teams">
-            <EntityTypeMapping TypeName="MvcCrudModel.Team">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Team">
               <MappingFragment StoreEntitySet="Team">
-                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
-                <ScalarProperty Name="SetupID" ColumnName="SetupID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SetupID" ColumnName="SetupID" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamPlayers">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPlayer">
+              <MappingFragment StoreEntitySet="TeamPlayer">
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeamPartitions">
-            <EntityTypeMapping TypeName="MvcCrudModel.TeamPartition">
+            <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPartition">
               <MappingFragment StoreEntitySet="TeamPartition">
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="SetupID" ColumnName="SetupID" />
@@ -470,16 +479,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TeamPlayers">
-            <EntityTypeMapping TypeName="MvcCrudModel.TeamPlayer">
-              <MappingFragment StoreEntitySet="TeamPlayer">
-                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
-                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -493,7 +493,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

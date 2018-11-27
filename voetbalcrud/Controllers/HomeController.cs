@@ -42,7 +42,7 @@ namespace voetbalcrud.Controllers
         public ActionResult Teams()
         {
 
-            MvcCrudEntities1 mvcCrudEntity = new MvcCrudEntities1();
+            PotjeVoetballenDBEntities mvcCrudEntity = new PotjeVoetballenDBEntities();
             var getNameList = mvcCrudEntity.Players.ToList();
             SelectList list = new SelectList(getNameList,"ID", "PlayerName");
             ViewBag.PlayerNameList = list;

@@ -4,24 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="60f7a2a449844f739f40729b36e1b1b1" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="MvcCrudModel.PlayersTable" Width="1.5" PointX="3.875" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcCrudModel.PlayerPosition" Width="1.5" PointX="6.5" PointY="8.25" />
-        <EntityTypeShape EntityType="MvcCrudModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
-        <AssociationConnector Association="MvcCrudModel.FK_PlayerPosition_PlayersTable" />
-        <AssociationConnector Association="MvcCrudModel.FK_PlayerPosition_Position" />
-        <AssociationConnector Association="MvcCrudModel.FK_TeamPlayer_PlayersTable" />
-        <EntityTypeShape EntityType="MvcCrudModel.Position" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MvcCrudModel.Setup" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="MvcCrudModel.Team" Width="1.5" PointX="3" PointY="6.5" />
-        <EntityTypeShape EntityType="MvcCrudModel.TeamPartition" Width="1.5" PointX="3" PointY="3.75" />
-        <EntityTypeShape EntityType="MvcCrudModel.TeamPlayer" Width="1.5" PointX="5.25" PointY="6.375" />
-        <AssociationConnector Association="MvcCrudModel.FK_TeamPartition_Position" />
-        <AssociationConnector Association="MvcCrudModel.FK_TeamPlayer_Position" />
-        <AssociationConnector Association="MvcCrudModel.FK_Team_Setup" />
-        <AssociationConnector Association="MvcCrudModel.FK_TeamPartition_Setup" />
-        <AssociationConnector Association="MvcCrudModel.FK_TeamPlayer_Team" />
-        </Diagram>
+      <Diagram DiagramId="a019d77838bc4e519ddaa1b379091b38" Name="Diagram1">
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Player" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.PlayerPositionStrength" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Position" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Setup" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Team" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.TeamPlayer" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_PlayerPositionStrength_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_TeamPlayer_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_PlayerPositionStrength_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_TeamPlayer_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_Team_Setup" ManuallyRouted="false" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_TeamPlayer_Team" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.TeamPartition" PointX="3" PointY="0.75" Width="1.5" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_TeamPartition_Position" />
+        <AssociationConnector Association="PotjeVoetballenDBModel.FK_TeamPartition_Setup" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

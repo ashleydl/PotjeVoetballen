@@ -13,10 +13,10 @@ namespace voetbalcrud.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MvcCrudEntities1 : DbContext
+    public partial class PotjeVoetballenDBEntities : DbContext
     {
-        public MvcCrudEntities1()
-            : base("name=MvcCrudEntities1")
+        public PotjeVoetballenDBEntities()
+            : base("name=PotjeVoetballenDBEntities")
         {
         }
     
@@ -30,7 +30,7 @@ namespace voetbalcrud.Models
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<Setup> Setups { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
-        public virtual DbSet<TeamPartition> TeamPartitions { get; set; }
         public virtual DbSet<TeamPlayer> TeamPlayers { get; set; }
+        public virtual DbSet<TeamPartition> TeamPartitions { get; set; }
     }
 }
