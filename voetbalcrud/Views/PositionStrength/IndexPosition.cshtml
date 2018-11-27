@@ -1,0 +1,44 @@
+﻿@model IEnumerable <voetbalcrud.Models.PositionStrength>
+
+@{
+    ViewBag.Title = "IndexPosition";
+    Layout = "~/Views/Home/Index.cshtml";
+}
+
+<h2>IndexPosition</h2>
+
+<p>
+    @Html.ActionLink("Maak nieuwe speler aan", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Strength)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PositionID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PositionID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PositionID })
+            </td>
+        </tr>
+    }
+
+</table>

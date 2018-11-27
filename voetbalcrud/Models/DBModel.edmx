@@ -206,15 +206,15 @@
         <EntityContainer Name="MvcCrudEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Players" EntityType="MvcCrudModel.Player" />
           <EntitySet Name="PlayerPositionStrengths" EntityType="MvcCrudModel.PlayerPositionStrength" />
+          <AssociationSet Name="FK_PlayerPositionStrength_Player" Association="MvcCrudModel.FK_PlayerPositionStrength_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="PlayerPositionStrength" EntitySet="PlayerPositionStrengths" />
+          </AssociationSet>
           <EntitySet Name="Positions" EntityType="MvcCrudModel.Position" />
           <EntitySet Name="Setups" EntityType="MvcCrudModel.Setup" />
           <EntitySet Name="Teams" EntityType="MvcCrudModel.Team" />
           <EntitySet Name="TeamPartitions" EntityType="MvcCrudModel.TeamPartition" />
           <EntitySet Name="TeamPlayers" EntityType="MvcCrudModel.TeamPlayer" />
-          <AssociationSet Name="FK_PlayerPositionStrength_Player" Association="MvcCrudModel.FK_PlayerPositionStrength_Player">
-            <End Role="Player" EntitySet="Players" />
-            <End Role="PlayerPositionStrength" EntitySet="PlayerPositionStrengths" />
-          </AssociationSet>
           <AssociationSet Name="FK_TeamPlayer_Player" Association="MvcCrudModel.FK_TeamPlayer_Player">
             <End Role="Player" EntitySet="Players" />
             <End Role="TeamPlayer" EntitySet="TeamPlayers" />
@@ -243,7 +243,7 @@
             <End Role="Team" EntitySet="Teams" />
             <End Role="TeamPlayer" EntitySet="TeamPlayers" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Player">
           <Key>
             <PropertyRef Name="ID" />
@@ -264,6 +264,18 @@
           <NavigationProperty Name="Player" Relationship="MvcCrudModel.FK_PlayerPositionStrength_Player" FromRole="PlayerPositionStrength" ToRole="Player" />
           <NavigationProperty Name="Position" Relationship="MvcCrudModel.FK_PlayerPositionStrength_Position" FromRole="PlayerPositionStrength" ToRole="Position" />
         </EntityType>
+        <Association Name="FK_PlayerPositionStrength_Player">
+          <End Type="MvcCrudModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MvcCrudModel.PlayerPositionStrength" Role="PlayerPositionStrength" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PlayerPositionStrength">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="ID" />
@@ -317,18 +329,6 @@
           <NavigationProperty Name="Position" Relationship="MvcCrudModel.FK_TeamPlayer_Position" FromRole="TeamPlayer" ToRole="Position" />
           <NavigationProperty Name="Team" Relationship="MvcCrudModel.FK_TeamPlayer_Team" FromRole="TeamPlayer" ToRole="Team" />
         </EntityType>
-        <Association Name="FK_PlayerPositionStrength_Player">
-          <End Type="MvcCrudModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="MvcCrudModel.PlayerPositionStrength" Role="PlayerPositionStrength" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PlayerPositionStrength">
-              <PropertyRef Name="PlayerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeamPlayer_Player">
           <End Type="MvcCrudModel.Player" Role="Player" Multiplicity="1" />
           <End Type="MvcCrudModel.TeamPlayer" Role="TeamPlayer" Multiplicity="*" />
@@ -479,7 +479,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

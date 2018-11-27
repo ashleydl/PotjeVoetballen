@@ -153,6 +153,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\PositionStrengthController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,7 +198,7 @@
       <DependentUpon>PlayersService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Positions.cs" />
+    <Compile Include="Models\PositionStrength.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="pvws.asmx.cs">
       <DependentUpon>pvws.asmx</DependentUpon>
@@ -408,6 +409,7 @@
     <Content Include="Views\Player\Edit.cshtml" />
     <Content Include="Views\Player\Delete.cshtml" />
     <Content Include="Views\Home\Teams.cshtml" />
+    <Content Include="Views\PositionStrength\IndexPosition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

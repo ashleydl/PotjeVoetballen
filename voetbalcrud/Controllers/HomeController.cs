@@ -33,8 +33,15 @@ namespace voetbalcrud.Controllers
             return View();
         }
 
+        public ActionResult IndexPosition()
+        {
+
+            return View("IndexPosition");
+        }
+
         public ActionResult Teams()
         {
+
             MvcCrudEntities1 mvcCrudEntity = new MvcCrudEntities1();
             var getNameList = mvcCrudEntity.Players.ToList();
             SelectList list = new SelectList(getNameList,"ID", "PlayerName");

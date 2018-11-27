@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="60f7a2a449844f739f40729b36e1b1b1" Name="Diagram1">
+      <Diagram DiagramId="60f7a2a449844f739f40729b36e1b1b1" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="MvcCrudModel.PlayersTable" Width="1.5" PointX="3.875" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcCrudModel.PlayerPosition" Width="1.5" PointX="6.5" PointY="8.25" />
-        <EntityTypeShape EntityType="MvcCrudModel.Position" Width="1.875" PointX="0.5" PointY="8.25" />
-        <EntityTypeShape EntityType="MvcCrudModel.Setup" Width="1.5" PointX="2" PointY="5.25" />
         <EntityTypeShape EntityType="MvcCrudModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MvcCrudModel.Team" Width="1.5" PointX="4.375" PointY="5.375" />
-        <EntityTypeShape EntityType="MvcCrudModel.TeamPartition" Width="1.625" PointX="4.375" PointY="9.25" />
-        <EntityTypeShape EntityType="MvcCrudModel.TeamPlayer" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="MvcCrudModel.FK_PlayerPosition_PlayersTable" />
         <AssociationConnector Association="MvcCrudModel.FK_PlayerPosition_Position" />
         <AssociationConnector Association="MvcCrudModel.FK_TeamPlayer_PlayersTable" />
+        <EntityTypeShape EntityType="MvcCrudModel.Position" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MvcCrudModel.Setup" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="MvcCrudModel.Team" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="MvcCrudModel.TeamPartition" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="MvcCrudModel.TeamPlayer" Width="1.5" PointX="5.25" PointY="6.375" />
         <AssociationConnector Association="MvcCrudModel.FK_TeamPartition_Position" />
         <AssociationConnector Association="MvcCrudModel.FK_TeamPlayer_Position" />
         <AssociationConnector Association="MvcCrudModel.FK_Team_Setup" />
         <AssociationConnector Association="MvcCrudModel.FK_TeamPartition_Setup" />
         <AssociationConnector Association="MvcCrudModel.FK_TeamPlayer_Team" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

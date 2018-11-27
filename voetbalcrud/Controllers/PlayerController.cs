@@ -10,7 +10,6 @@ namespace voetbalcrud.Controllers
 {
     public class PlayerController : Controller
     {
-
         // GET: Player/Index
         public ActionResult Index()
         {
@@ -38,14 +37,16 @@ namespace voetbalcrud.Controllers
 
         // POST: Player/Create
         [HttpPost]
-        public ActionResult Create(Player player)
+        public ActionResult Create(Player player, Position position)
         {
+
             try
             {
                 // TODO: Add insert logic here
                 using (MvcCrudEntities1 db = new MvcCrudEntities1())
                 {
                     db.Players.Add(player);
+                    db.Positions.Add(position);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
