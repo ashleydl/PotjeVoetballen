@@ -1,63 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PotjeVoetballenDBModelStoreContainer" CdmEntityContainer="PotjeVoetballenDBEntities">
-    <EntitySetMapping Name="Players">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Player">
+  <EntityContainerMapping StorageEntityContainer="DBPVMVCModelStoreContainer" CdmEntityContainer="PVEntities">
+    <EntitySetMapping Name="Player">
+      <EntityTypeMapping TypeName="DBPVMVCModel.Player">
         <MappingFragment StoreEntitySet="Player">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PlayerPositionStrengths">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.PlayerPositionStrength">
-        <MappingFragment StoreEntitySet="PlayerPositionStrength">
+          <ScalarProperty Name="Keep" ColumnName="Keep" />
+          <ScalarProperty Name="Midfield" ColumnName="Midfield" />
+          <ScalarProperty Name="Attack" ColumnName="Attack" />
+          <ScalarProperty Name="Defend" ColumnName="Defend" />
           <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-          <ScalarProperty Name="Strength" ColumnName="Strength" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Positions">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Position">
-        <MappingFragment StoreEntitySet="Position">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Setups">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Setup">
-        <MappingFragment StoreEntitySet="Setup">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SetupName" ColumnName="SetupName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Teams">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Team">
-        <MappingFragment StoreEntitySet="Team">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
-          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TeamPlayers">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPlayer">
-        <MappingFragment StoreEntitySet="TeamPlayer">
-          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TeamPartitions">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPartition">
-        <MappingFragment StoreEntitySet="TeamPartition">
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

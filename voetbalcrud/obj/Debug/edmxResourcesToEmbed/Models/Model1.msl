@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBPVMVCModelStoreContainer" CdmEntityContainer="PVMEntities">
+    <EntitySetMapping Name="Player">
+      <EntityTypeMapping TypeName="DBPVMVCModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="Keep" ColumnName="Keep" />
+          <ScalarProperty Name="Midfield" ColumnName="Midfield" />
+          <ScalarProperty Name="Attack" ColumnName="Attack" />
+          <ScalarProperty Name="Defend" ColumnName="Defend" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlayerPosition">
+      <EntityTypeMapping TypeName="DBPVMVCModel.PlayerPosition">
+        <MappingFragment StoreEntitySet="PlayerPosition">
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="AmountKeep" ColumnName="AmountKeep" />
+          <ScalarProperty Name="AmountMidfield" ColumnName="AmountMidfield" />
+          <ScalarProperty Name="AmountAttack" ColumnName="AmountAttack" />
+          <ScalarProperty Name="AmountDefend" ColumnName="AmountDefend" />
+          <ScalarProperty Name="PlayerPositionID" ColumnName="PlayerPositionID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

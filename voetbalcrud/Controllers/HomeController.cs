@@ -33,23 +33,13 @@ namespace voetbalcrud.Controllers
             return View();
         }
 
-        public ActionResult IndexPosition()
+        public ActionResult SetPosition()
         {
 
-            return View("IndexPosition");
-        }
-
-        public ActionResult Teams()
-        {
-
-            PotjeVoetballenDBEntities mvcCrudEntity = new PotjeVoetballenDBEntities();
-            var getNameList = mvcCrudEntity.Players.ToList();
-            SelectList list = new SelectList(getNameList,"ID", "PlayerName");
-            ViewBag.PlayerNameList = list;
             return View();
-
         }
-      
+
+
     }
 }
 

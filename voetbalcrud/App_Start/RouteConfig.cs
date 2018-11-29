@@ -17,7 +17,7 @@ namespace voetbalcrud
             routes.MapRoute(
                 name: "Positions",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "PositionStrenthController", action = "IndexPosition", id = UrlParameter.Optional }
+                defaults: new { controller = "PlayerListController", action = "IndexPosition", id = UrlParameter.Optional }
 
             );
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -25,7 +25,7 @@ namespace voetbalcrud
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HomeController", action = "Teams", id = UrlParameter.Optional }
+                defaults: new { controller = "HomeController", action = "Index", id = UrlParameter.Optional }
 
             );
         }

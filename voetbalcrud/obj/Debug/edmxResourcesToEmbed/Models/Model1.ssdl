@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBPVMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerName" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Keep" Type="int" Nullable="false" />
+    <Property Name="Midfield" Type="int" Nullable="false" />
+    <Property Name="Attack" Type="int" Nullable="false" />
+    <Property Name="Defend" Type="int" Nullable="false" />
+    <Property Name="PlayerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlayerPosition">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerName" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="AmountKeep" Type="int" Nullable="false" />
+    <Property Name="AmountMidfield" Type="int" Nullable="false" />
+    <Property Name="AmountAttack" Type="int" Nullable="false" />
+    <Property Name="AmountDefend" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PlayerPositionID" Type="int" Nullable="false" />
+    <Property Name="PlayerID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PlayerPosition_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="PlayerID" />
+      </Principal>
+      <Dependent Role="PlayerPosition">
+        <PropertyRef Name="PlayerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBPVMVCModelStoreContainer">
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlayerPosition" EntityType="Self.PlayerPosition" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PlayerPosition_Player" Association="Self.FK_PlayerPosition_Player">
+      <End Role="Player" EntitySet="Player" />
+      <End Role="PlayerPosition" EntitySet="PlayerPosition" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -13,10 +13,10 @@ namespace voetbalcrud.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PotjeVoetballenDBEntities : DbContext
+    public partial class PVMEntities : DbContext
     {
-        public PotjeVoetballenDBEntities()
-            : base("name=PotjeVoetballenDBEntities")
+        public PVMEntities()
+            : base("name=PVMEntities")
         {
         }
     
@@ -25,12 +25,7 @@ namespace voetbalcrud.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Player> Players { get; set; }
-        public virtual DbSet<PlayerPositionStrength> PlayerPositionStrengths { get; set; }
-        public virtual DbSet<Position> Positions { get; set; }
-        public virtual DbSet<Setup> Setups { get; set; }
-        public virtual DbSet<Team> Teams { get; set; }
-        public virtual DbSet<TeamPlayer> TeamPlayers { get; set; }
-        public virtual DbSet<TeamPartition> TeamPartitions { get; set; }
+        public virtual DbSet<Player> Player { get; set; }
+        public virtual DbSet<PlayerPosition> PlayerPosition { get; set; }
     }
 }

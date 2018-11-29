@@ -22,9 +22,8 @@
                 <ul class="nav navbar-nav">
                  
                     <li>@Html.ActionLink("Over ons", "About", "Home")</li>
-                    <li>@Html.ActionLink("Spelers", "Index", "Player")</li>
-                    <li>@Html.ActionLink("Maak teams", "Teams", "Home")</li>
-                    <li>@Html.ActionLink("Maak spelers", "IndexPosition", "Home")</li>
+                    <li>@Html.ActionLink("Spelers", "Index", "PlayerList")</li>
+                    <li>@Html.ActionLink("pagina2", "SetPosition", "PlayerList")</li>
                 </ul>
             </div>
         </div>
@@ -37,7 +36,7 @@
         </footer>
     </div>
 
-    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
