@@ -114,6 +114,12 @@ namespace voetbalcrud.Controllers
             }
         }
 
+        // GET: PlayerList/Create
+        public ActionResult SetPosition()
+        {
+            return View();
+        }
+
         // POST: PlayerList/
         [HttpPost]
         public ActionResult SetPosition(int id, Player player)

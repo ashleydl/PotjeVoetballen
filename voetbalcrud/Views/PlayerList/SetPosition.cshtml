@@ -4,22 +4,24 @@
     ViewBag.Title = "SetPosition";
 }
 
-<h2>Kies hoeveel spelers per positie</h2>
+<h2>SetPosition</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Spelers voor middenveld</h4>
+        <h4>PlayerPosition</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountAttack, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountAttack, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountAttack, "", new { @class = "text-danger" })
+                <control-label col-md-2>Aantal keep</control-label>
+
+                @Html.EditorFor(model => model.AmountKeep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmountKeep, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -28,6 +30,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AmountMidfield, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AmountMidfield, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmountAttack, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AmountAttack, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmountAttack, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -47,14 +57,9 @@
     </div>
 }
 
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-
-
-
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
