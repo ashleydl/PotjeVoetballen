@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="30dceca507b344529303866b5e4bb820" Name="Diagram1">
-        <EntityTypeShape EntityType="DBPVMVCModel.Player" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="e39edc0c56854590838767271cb9fe03" Name="Diagram1">
+        <EntityTypeShape EntityType="DBPVMVCModel.Player" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBPVMVCModel.PlayerPosition" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBPVMVCModel.Team" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="DBPVMVCModel.FK_PlayerPosition_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="DBPVMVCModel.FK_PlayerPosition_Team" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

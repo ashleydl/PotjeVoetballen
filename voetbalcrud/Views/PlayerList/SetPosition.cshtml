@@ -4,29 +4,20 @@
     ViewBag.Title = "SetPosition";
 }
 
-<h2>SetPosition</h2>
+<h2>Kies aantal spelers per positie</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PlayerPosition</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            <div class="col-md-10">
-                <control-label col-md-2>Aantal keep</control-label>
-
-                @Html.EditorFor(model => model.AmountKeep, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountKeep, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AmountMidfield, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AmountMidfield, "Aantal middenveld", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AmountMidfield, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AmountMidfield, "", new { @class = "text-danger" })
@@ -34,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountAttack, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AmountAttack, "Aantal aanval", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AmountAttack, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AmountAttack, "", new { @class = "text-danger" })
@@ -42,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountDefend, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AmountDefend, "Aantal verdediging", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AmountDefend, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AmountDefend, "", new { @class = "text-danger" })
@@ -58,8 +49,10 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Terug naar spelers", "Index")
 </div>
+
+<div><button type="button" onclick="location.href='@Url.Action("Index", "PlayerList")'" /></div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

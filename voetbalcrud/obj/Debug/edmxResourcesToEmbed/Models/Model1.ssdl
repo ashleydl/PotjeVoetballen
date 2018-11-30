@@ -13,19 +13,30 @@
   </EntityType>
   <EntityType Name="PlayerPosition">
     <Key>
+      <PropertyRef Name="PlayerPositionID" />
       <PropertyRef Name="PlayerID" />
     </Key>
     <Property Name="PlayerName" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="AmountKeep" Type="int" Nullable="false" />
     <Property Name="AmountMidfield" Type="int" Nullable="false" />
     <Property Name="AmountAttack" Type="int" Nullable="false" />
-    <Property Name="AmountDefend" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="AmountDefend" Type="int" Nullable="false" />
     <Property Name="PlayerPositionID" Type="int" Nullable="false" />
     <Property Name="PlayerID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="PlayerPositionID" />
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerPositionID" Type="int" Nullable="false" />
+    <Property Name="PlayerID" Type="int" Nullable="false" />
+    <Property Name="TeamName" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TeamID" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK_PlayerPosition_Player">
     <End Role="Player" Type="Self.Player" Multiplicity="1" />
-    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="0..1" />
+    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
         <PropertyRef Name="PlayerID" />
@@ -35,11 +46,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PlayerPosition_Team">
+    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="PlayerPositionID" />
+        <PropertyRef Name="PlayerID" />
+      </Principal>
+      <Dependent Role="PlayerPosition">
+        <PropertyRef Name="PlayerPositionID" />
+        <PropertyRef Name="PlayerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DBPVMVCModelStoreContainer">
     <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlayerPosition" EntityType="Self.PlayerPosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_PlayerPosition_Player" Association="Self.FK_PlayerPosition_Player">
       <End Role="Player" EntitySet="Player" />
+      <End Role="PlayerPosition" EntitySet="PlayerPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerPosition_Team" Association="Self.FK_PlayerPosition_Team">
+      <End Role="Team" EntitySet="Team" />
       <End Role="PlayerPosition" EntitySet="PlayerPosition" />
     </AssociationSet>
   </EntityContainer>

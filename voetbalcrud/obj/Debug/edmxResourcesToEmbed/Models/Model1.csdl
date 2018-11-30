@@ -14,20 +14,33 @@
   </EntityType>
   <EntityType Name="PlayerPosition">
     <Key>
+      <PropertyRef Name="PlayerPositionID" />
       <PropertyRef Name="PlayerID" />
     </Key>
     <Property Name="PlayerName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="AmountKeep" Type="Int32" Nullable="false" />
     <Property Name="AmountMidfield" Type="Int32" Nullable="false" />
     <Property Name="AmountAttack" Type="Int32" Nullable="false" />
-    <Property Name="AmountDefend" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="AmountDefend" Type="Int32" Nullable="false" />
     <Property Name="PlayerPositionID" Type="Int32" Nullable="false" />
     <Property Name="PlayerID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Player" Relationship="Self.FK_PlayerPosition_Player" FromRole="PlayerPosition" ToRole="Player" />
+    <NavigationProperty Name="Team" Relationship="Self.FK_PlayerPosition_Team" FromRole="PlayerPosition" ToRole="Team" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="PlayerPositionID" />
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerPositionID" Type="Int32" Nullable="false" />
+    <Property Name="PlayerID" Type="Int32" Nullable="false" />
+    <Property Name="TeamName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TeamID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PlayerPosition" Relationship="Self.FK_PlayerPosition_Team" FromRole="Team" ToRole="PlayerPosition" />
   </EntityType>
   <Association Name="FK_PlayerPosition_Player">
     <End Role="Player" Type="Self.Player" Multiplicity="1" />
-    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="0..1" />
+    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
         <PropertyRef Name="PlayerID" />
@@ -37,11 +50,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PlayerPosition_Team">
+    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="PlayerPosition" Type="Self.PlayerPosition" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="PlayerPositionID" />
+        <PropertyRef Name="PlayerID" />
+      </Principal>
+      <Dependent Role="PlayerPosition">
+        <PropertyRef Name="PlayerPositionID" />
+        <PropertyRef Name="PlayerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PVMEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Player" EntityType="Self.Player" />
     <EntitySet Name="PlayerPosition" EntityType="Self.PlayerPosition" />
+    <EntitySet Name="Team" EntityType="Self.Team" />
     <AssociationSet Name="FK_PlayerPosition_Player" Association="Self.FK_PlayerPosition_Player">
       <End Role="Player" EntitySet="Player" />
+      <End Role="PlayerPosition" EntitySet="PlayerPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerPosition_Team" Association="Self.FK_PlayerPosition_Team">
+      <End Role="Team" EntitySet="Team" />
       <End Role="PlayerPosition" EntitySet="PlayerPosition" />
     </AssociationSet>
   </EntityContainer>

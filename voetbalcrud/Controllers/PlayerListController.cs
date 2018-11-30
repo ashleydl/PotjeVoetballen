@@ -122,14 +122,41 @@ namespace voetbalcrud.Controllers
 
         // POST: PlayerList/
         [HttpPost]
-        public ActionResult SetPosition(int id, Player player)
+        public ActionResult SetPosition(PlayerPosition playerPosition)
         {
             try
             {
                 // TODO: Add update logic here
                 using (PVMEntities db = new PVMEntities())
                 {
-                    db.Entry(player).State = EntityState.Modified;
+                    db.Entry(playerPosition).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("Teams");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: PlayerList/Create
+        public ActionResult AskTeamName()
+        {
+            return View();
+        }
+
+        // POST: PlayerList/
+        [HttpPost]
+        public ActionResult AskTeamName(Team team)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                using (PVMEntities db = new PVMEntities())
+                {
+                    db.Entry(team).State = EntityState.Modified;
                     db.SaveChanges();
                 }
 
@@ -140,5 +167,5 @@ namespace voetbalcrud.Controllers
                 return View();
             }
         }
-    }
+        }
 }

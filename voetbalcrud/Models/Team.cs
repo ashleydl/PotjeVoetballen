@@ -12,17 +12,13 @@ namespace voetbalcrud.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PlayerPosition
+    public partial class Team
     {
-        public string PlayerName { get; set; }
-        public int AmountKeep { get; set; }
-        public int AmountMidfield { get; set; }
-        public int AmountAttack { get; set; }
-        public int AmountDefend { get; set; }
         public int PlayerPositionID { get; set; }
         public int PlayerID { get; set; }
+        public string TeamName { get; set; }
+        public int TeamID { get; set; }
     
-        public virtual Player Player { get; set; }
-        public virtual Team Team { get; set; }
+        public virtual PlayerPosition PlayerPosition { get; set; }
     }
 }
