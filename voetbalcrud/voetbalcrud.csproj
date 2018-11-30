@@ -386,12 +386,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\PlayerList\Index.cshtml" />
-    <Content Include="Views\PlayerList\Create.cshtml" />
     <Content Include="Views\PlayerList\Details.cshtml" />
     <Content Include="Views\PlayerList\Edit.cshtml" />
     <Content Include="Views\PlayerList\Delete.cshtml" />
     <Content Include="Views\PlayerList\SetPosition.cshtml" />
     <Content Include="Views\PlayerList\AskTeamName.cshtml" />
+    <Content Include="Views\PlayerList\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

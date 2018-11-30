@@ -15,9 +15,9 @@ namespace voetbalcrud.Controllers
         {
             using (PVMEntities db = new PVMEntities())
             {
-                return View(db.Player.ToList());
+                return View(db.Players.ToList());
             }
-            
+
         }
 
         // GET: PlayerList/Details/5
@@ -25,9 +25,9 @@ namespace voetbalcrud.Controllers
         {
             using (PVMEntities db = new PVMEntities())
             {
-                return View(db.Player.Where(x => x.PlayerID == id).FirstOrDefault());  ;
+                return View(db.Players.Where(x => x.PlayerID == id).FirstOrDefault()); ;
             }
-               
+
         }
 
         // GET: PlayerList/Create
@@ -38,32 +38,24 @@ namespace voetbalcrud.Controllers
 
         // POST: PlayerList/Create
         [HttpPost]
-        public ActionResult Create(Player player)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Player player)
         {
             try
             {
-                // TODO: Add insert logic here
-                using (PVMEntities db = new PVMEntities())
+                if (ModelState.IsValid)
                 {
-                    db.Player.Add(player);
+                    db.Students.Add(student);
                     db.SaveChanges();
-                }
                     return RedirectToAction("Index");
+                }
             }
-            catch
+            catch (DataException /* dex */)
             {
-                return View();
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-        }
-
-        // GET: PlayerList/Edit/5
-        public ActionResult Edit(int id)
-        {
-            using (PVMEntities db = new PVMEntities())
-            {
-                return View(db.Player.Where(x => x.PlayerID == id).FirstOrDefault()); ;
-
-            }
+            return View(student);
         }
 
         // POST: PlayerList/Edit/5
@@ -79,7 +71,7 @@ namespace voetbalcrud.Controllers
                     db.SaveChanges();
                 }
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -101,12 +93,12 @@ namespace voetbalcrud.Controllers
             {
                 using (PVMEntities db = new PVMEntities())
                 {
-                    player = db.Player.Where(x => x.PlayerID == id).FirstOrDefault();
-                    db.Player.Remove(player);
+                    player = db.Players.Where(x => x.PlayerID == id).FirstOrDefault();
+                    db.Players.Remove(player);
                     db.SaveChanges();
                 }
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -149,23 +141,27 @@ namespace voetbalcrud.Controllers
 
         // POST: PlayerList/
         [HttpPost]
-        public ActionResult AskTeamName(Team team)
+        
+
+        public ActionResult AskTeamName(Team model)
         {
             try
             {
-                // TODO: Add update logic here
-                using (PVMEntities db = new PVMEntities())
-                {
-                    db.Entry(team).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
+                PVMEntities db = new PVMEntities();
+                Team emp = new Team();
+                emp.TeamName = model.TeamName;
+                db.Team.Add(emp);
+                db.SaveChanges();
 
-                return RedirectToAction("Index");
+                int latestEmpId = emp.TeamID;
             }
-            catch
+
+            catch (Exception ex)
             {
-                return View();
+                throw ex;
             }
+
+            return RedirectToAction("Index");
         }
-        }
+    }
 }
