@@ -13,10 +13,10 @@ namespace voetbalcrud.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PVMEntities : DbContext
+    public partial class PVMEntities1 : DbContext
     {
-        public PVMEntities()
-            : base("name=PVMEntities")
+        public PVMEntities1()
+            : base("name=PVMEntities1")
         {
         }
     
@@ -26,7 +26,8 @@ namespace voetbalcrud.Models
         }
     
         public virtual DbSet<Player> Player { get; set; }
-        public virtual DbSet<PlayerPosition> PlayerPosition { get; set; }
+        public virtual DbSet<Setup> Setup { get; set; }
         public virtual DbSet<Team> Team { get; set; }
+        public virtual DbSet<TeamPlayer> TeamPlayer { get; set; }
     }
 }

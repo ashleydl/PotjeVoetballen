@@ -27,6 +27,16 @@ namespace voetbalcrud
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "HomeController", action = "Create", id = UrlParameter.Optional }
 
+                   );
+
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Team",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "PlayerListController", action = "Create", id = UrlParameter.Optional }
+
+
             );
         }
     }

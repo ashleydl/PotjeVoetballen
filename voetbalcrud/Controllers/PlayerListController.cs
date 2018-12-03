@@ -13,21 +13,21 @@ namespace voetbalcrud.Controllers
         // GET: PlayerList
         public ActionResult Index()
         {
-            using (PVMEntities db = new PVMEntities())
+            using (PVMEntities1 db = new PVMEntities1())
             {
                 return View(db.Player.ToList());
             }
-            
+
         }
 
         // GET: PlayerList/Details/5
         public ActionResult Details(int id)
         {
-            using (PVMEntities db = new PVMEntities())
+            using (PVMEntities1 db = new PVMEntities1())
             {
-                return View(db.Player.Where(x => x.PlayerID == id).FirstOrDefault());  ;
+                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
             }
-               
+
         }
 
         // GET: PlayerList/Create
@@ -43,12 +43,12 @@ namespace voetbalcrud.Controllers
             try
             {
                 // TODO: Add insert logic here
-                using (PVMEntities db = new PVMEntities())
+                using (PVMEntities1 db = new PVMEntities1())
                 {
                     db.Player.Add(player);
                     db.SaveChanges();
                 }
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -59,9 +59,9 @@ namespace voetbalcrud.Controllers
         // GET: PlayerList/Edit/5
         public ActionResult Edit(int id)
         {
-            using (PVMEntities db = new PVMEntities())
+            using (PVMEntities1 db = new PVMEntities1())
             {
-                return View(db.Player.Where(x => x.PlayerID == id).FirstOrDefault()); ;
+                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
 
             }
         }
@@ -73,13 +73,13 @@ namespace voetbalcrud.Controllers
             try
             {
                 // TODO: Add update logic here
-                using (PVMEntities db = new PVMEntities())
+                using (PVMEntities1 db = new PVMEntities1())
                 {
                     db.Entry(player).State = EntityState.Modified;
                     db.SaveChanges();
                 }
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -99,14 +99,14 @@ namespace voetbalcrud.Controllers
         {
             try
             {
-                using (PVMEntities db = new PVMEntities())
+                using (PVMEntities1 db = new PVMEntities1())
                 {
-                    player = db.Player.Where(x => x.PlayerID == id).FirstOrDefault();
+                    player = db.Player.Where(x => x.ID == id).FirstOrDefault();
                     db.Player.Remove(player);
                     db.SaveChanges();
                 }
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -120,52 +120,6 @@ namespace voetbalcrud.Controllers
             return View();
         }
 
-        // POST: PlayerList/
-        [HttpPost]
-        public ActionResult SetPosition(PlayerPosition playerPosition)
-        {
-            try
-            {
-                // TODO: Add update logic here
-                using (PVMEntities db = new PVMEntities())
-                {
-                    db.Entry(playerPosition).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-
-                return RedirectToAction("Teams");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PlayerList/Create
-        public ActionResult AskTeamName()
-        {
-            return View();
-        }
-
-        // POST: PlayerList/
-        [HttpPost]
-        public ActionResult AskTeamName(Team team)
-        {
-            try
-            {
-                // TODO: Add update logic here
-                using (PVMEntities db = new PVMEntities())
-                {
-                    db.Entry(team).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        }
+       
+    }
 }

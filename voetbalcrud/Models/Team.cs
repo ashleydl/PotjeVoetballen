@@ -14,11 +14,18 @@ namespace voetbalcrud.Models
     
     public partial class Team
     {
-        public int PlayerPositionID { get; set; }
-        public int PlayerID { get; set; }
-        public string TeamName { get; set; }
-        public int TeamID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Team()
+        {
+            this.TeamPlayer = new HashSet<TeamPlayer>();
+        }
     
-        public virtual PlayerPosition PlayerPosition { get; set; }
+        public int ID { get; set; }
+        public int SetupID { get; set; }
+        public string TeamName { get; set; }
+    
+        public virtual Setup Setup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamPlayer> TeamPlayer { get; set; }
     }
 }
