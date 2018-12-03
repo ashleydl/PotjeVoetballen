@@ -1,38 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DBPVMVCModelStoreContainer" CdmEntityContainer="PVMEntities">
+  <EntityContainerMapping StorageEntityContainer="PotjeVoetballenDBModelStoreContainer" CdmEntityContainer="PVMEntities1">
     <EntitySetMapping Name="Player">
-      <EntityTypeMapping TypeName="DBPVMVCModel.Player">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Player">
         <MappingFragment StoreEntitySet="Player">
-          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Keep" ColumnName="Keep" />
-          <ScalarProperty Name="Midfield" ColumnName="Midfield" />
-          <ScalarProperty Name="Attack" ColumnName="Attack" />
           <ScalarProperty Name="Defend" ColumnName="Defend" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="Attack" ColumnName="Attack" />
+          <ScalarProperty Name="Midfield" ColumnName="Midfield" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerNAme" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PlayerPosition">
-      <EntityTypeMapping TypeName="DBPVMVCModel.PlayerPosition">
-        <MappingFragment StoreEntitySet="PlayerPosition">
-          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
-          <ScalarProperty Name="AmountKeep" ColumnName="AmountKeep" />
-          <ScalarProperty Name="AmountMidfield" ColumnName="AmountMidfield" />
-          <ScalarProperty Name="AmountAttack" ColumnName="AmountAttack" />
+    <EntitySetMapping Name="Setup">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Setup">
+        <MappingFragment StoreEntitySet="Setup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="AmountDefend" ColumnName="AmountDefend" />
-          <ScalarProperty Name="PlayerPositionID" ColumnName="PlayerPositionID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="AmountAttack" ColumnName="AmountAttack" />
+          <ScalarProperty Name="AmountMidfield" ColumnName="AmountMidfield" />
+          <ScalarProperty Name="AmountKeep" ColumnName="AmountKeep" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Team">
-      <EntityTypeMapping TypeName="DBPVMVCModel.Team">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Team">
         <MappingFragment StoreEntitySet="Team">
-          <ScalarProperty Name="PlayerPositionID" ColumnName="PlayerPositionID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
           <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamPlayer">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPlayer">
+        <MappingFragment StoreEntitySet="TeamPlayer">
+          <ScalarProperty Name="BestPosition" ColumnName="BestPosition" />
           <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

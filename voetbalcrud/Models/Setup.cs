@@ -12,22 +12,21 @@ namespace voetbalcrud.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Player
+    public partial class Setup
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Player()
+        public Setup()
         {
-            this.TeamPlayer = new HashSet<TeamPlayer>();
+            this.Team = new HashSet<Team>();
         }
     
         public int ID { get; set; }
-        public Nullable<int> Keep { get; set; }
-        public Nullable<int> Defend { get; set; }
-        public Nullable<int> Attack { get; set; }
-        public Nullable<int> Midfield { get; set; }
-        public string PlayerName { get; set; }
+        public Nullable<int> AmountDefend { get; set; }
+        public Nullable<int> AmountAttack { get; set; }
+        public Nullable<int> AmountMidfield { get; set; }
+        public int AmountKeep { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamPlayer> TeamPlayer { get; set; }
+        public virtual ICollection<Team> Team { get; set; }
     }
 }

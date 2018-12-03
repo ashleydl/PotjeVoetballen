@@ -13,9 +13,9 @@ namespace voetbalcrud.Controllers
         // GET: PlayerList
         public ActionResult Index()
         {
-            using (PVMEntities db = new PVMEntities())
+            using (PVMEntities1 db = new PVMEntities1())
             {
-                return View(db.Players.ToList());
+                return View(db.Player.ToList());
             }
 
         }
@@ -23,9 +23,9 @@ namespace voetbalcrud.Controllers
         // GET: PlayerList/Details/5
         public ActionResult Details(int id)
         {
-            using (PVMEntities db = new PVMEntities())
+            using (PVMEntities1 db = new PVMEntities1())
             {
-                return View(db.Players.Where(x => x.PlayerID == id).FirstOrDefault()); ;
+                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
             }
 
         }
@@ -38,24 +38,32 @@ namespace voetbalcrud.Controllers
 
         // POST: PlayerList/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate")]Player player)
+        public ActionResult Create(Player player)
         {
             try
             {
-                if (ModelState.IsValid)
+                // TODO: Add insert logic here
+                using (PVMEntities1 db = new PVMEntities1())
                 {
-                    db.Students.Add(student);
+                    db.Player.Add(player);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
                 }
+                return RedirectToAction("Index");
             }
-            catch (DataException /* dex */)
+            catch
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                return View();
             }
-            return View(student);
+        }
+
+        // GET: PlayerList/Edit/5
+        public ActionResult Edit(int id)
+        {
+            using (PVMEntities1 db = new PVMEntities1())
+            {
+                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
+
+            }
         }
 
         // POST: PlayerList/Edit/5
@@ -65,7 +73,7 @@ namespace voetbalcrud.Controllers
             try
             {
                 // TODO: Add update logic here
-                using (PVMEntities db = new PVMEntities())
+                using (PVMEntities1 db = new PVMEntities1())
                 {
                     db.Entry(player).State = EntityState.Modified;
                     db.SaveChanges();
@@ -91,10 +99,10 @@ namespace voetbalcrud.Controllers
         {
             try
             {
-                using (PVMEntities db = new PVMEntities())
+                using (PVMEntities1 db = new PVMEntities1())
                 {
-                    player = db.Players.Where(x => x.PlayerID == id).FirstOrDefault();
-                    db.Players.Remove(player);
+                    player = db.Player.Where(x => x.ID == id).FirstOrDefault();
+                    db.Player.Remove(player);
                     db.SaveChanges();
                 }
 
@@ -106,62 +114,9 @@ namespace voetbalcrud.Controllers
             }
         }
 
-        // GET: PlayerList/Create
-        public ActionResult SetPosition()
-        {
-            return View();
+ 
         }
 
-        // POST: PlayerList/
-        [HttpPost]
-        public ActionResult SetPosition(PlayerPosition playerPosition)
-        {
-            try
-            {
-                // TODO: Add update logic here
-                using (PVMEntities db = new PVMEntities())
-                {
-                    db.Entry(playerPosition).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
 
-                return RedirectToAction("Teams");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: PlayerList/Create
-        public ActionResult AskTeamName()
-        {
-            return View();
-        }
-
-        // POST: PlayerList/
-        [HttpPost]
-        
-
-        public ActionResult AskTeamName(Team model)
-        {
-            try
-            {
-                PVMEntities db = new PVMEntities();
-                Team emp = new Team();
-                emp.TeamName = model.TeamName;
-                db.Team.Add(emp);
-                db.SaveChanges();
-
-                int latestEmpId = emp.TeamID;
-            }
-
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return RedirectToAction("Index");
-        }
     }
-}
