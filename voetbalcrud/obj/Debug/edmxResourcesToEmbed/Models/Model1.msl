@@ -9,7 +9,7 @@
           <ScalarProperty Name="Defend" ColumnName="Defend" />
           <ScalarProperty Name="Attack" ColumnName="Attack" />
           <ScalarProperty Name="Midfield" ColumnName="Midfield" />
-          <ScalarProperty Name="PlayerName" ColumnName="PlayerNAme" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -33,14 +33,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TeamPlayer">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPlayer">
-        <MappingFragment StoreEntitySet="TeamPlayer">
-          <ScalarProperty Name="BestPosition" ColumnName="BestPosition" />
-          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <AssociationSetMapping Name="TeamPlayer" TypeName="PotjeVoetballenDBModel.TeamPlayer" StoreEntitySet="TeamPlayer">
+      <EndProperty Name="Player">
+        <ScalarProperty Name="ID" ColumnName="PlayerID" />
+      </EndProperty>
+      <EndProperty Name="Team">
+        <ScalarProperty Name="ID" ColumnName="TeamID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

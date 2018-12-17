@@ -152,8 +152,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MakeTeamController.cs" />
     <Compile Include="Controllers\PlayerListController.cs" />
-    <Compile Include="Controllers\SetUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,9 +179,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TeamPlayer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="PlayersService.asmx.cs">
@@ -389,21 +386,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\PlayerList\Index.cshtml" />
+    <Content Include="Views\PlayerList\PlayerListIndex.cshtml" />
     <Content Include="Views\PlayerList\Details.cshtml" />
     <Content Include="Views\PlayerList\Edit.cshtml" />
     <Content Include="Views\PlayerList\Delete.cshtml" />
-    <Content Include="Views\PlayerList\AskTeamName.cshtml" />
     <Content Include="Views\PlayerList\Create.cshtml" />
-    <Content Include="Views\SetUp\Create.cshtml" />
-    <Content Include="Views\SetUp\Index.cshtml" />
-    <Content Include="Views\SetUp\Details.cshtml" />
-    <Content Include="Views\SetUp\Edit.cshtml" />
-    <Content Include="Views\SetUp\Delete.cshtml" />
+    <Content Include="Views\PlayerList\SetupTeam1.cshtml" />
+    <Content Include="Views\PlayerList\ResultPage.cshtml" />
+    <Content Include="Views\PlayerList\TeamName.cshtml" />
+    <Content Include="Views\PlayerList\SetupTeam2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AutoSearch\" />
+    <Folder Include="Views\Calculation\" />
+    <Folder Include="Views\MakeTeam\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

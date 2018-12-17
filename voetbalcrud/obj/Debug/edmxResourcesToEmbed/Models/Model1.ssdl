@@ -5,20 +5,20 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Keep" Type="int" />
-    <Property Name="Defend" Type="int" />
-    <Property Name="Attack" Type="int" />
-    <Property Name="Midfield" Type="int" />
-    <Property Name="PlayerNAme" Type="varchar" MaxLength="50" />
+    <Property Name="Keep" Type="int" Nullable="false" />
+    <Property Name="Defend" Type="int" Nullable="false" />
+    <Property Name="Attack" Type="int" Nullable="false" />
+    <Property Name="Midfield" Type="int" Nullable="false" />
+    <Property Name="PlayerName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Setup">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="AmountDefend" Type="int" />
-    <Property Name="AmountAttack" Type="int" />
-    <Property Name="AmountMidfield" Type="int" />
+    <Property Name="AmountDefend" Type="int" Nullable="false" />
+    <Property Name="AmountAttack" Type="int" Nullable="false" />
+    <Property Name="AmountMidfield" Type="int" Nullable="false" />
     <Property Name="AmountKeep" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Team">
@@ -34,7 +34,6 @@
       <PropertyRef Name="TeamID" />
       <PropertyRef Name="PlayerID" />
     </Key>
-    <Property Name="BestPosition" Type="nchar" MaxLength="10" />
     <Property Name="TeamID" Type="int" Nullable="false" />
     <Property Name="PlayerID" Type="int" Nullable="false" />
   </EntityType>

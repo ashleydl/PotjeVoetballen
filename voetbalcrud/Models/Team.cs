@@ -17,7 +17,7 @@ namespace voetbalcrud.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Team()
         {
-            this.TeamPlayer = new HashSet<TeamPlayer>();
+            this.Player = new HashSet<Player>();
         }
     
         public int ID { get; set; }
@@ -26,6 +26,6 @@ namespace voetbalcrud.Models
     
         public virtual Setup Setup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamPlayer> TeamPlayer { get; set; }
+        public virtual ICollection<Player> Player { get; set; }
     }
 }

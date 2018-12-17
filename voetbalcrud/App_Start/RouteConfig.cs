@@ -14,20 +14,21 @@ namespace voetbalcrud
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Positions",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "PlayerListController", action = "Index", id = UrlParameter.Optional }
+            //routes.MapRoute(
+            //    name: "Positions",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "PlayerList", action = "Index", id = UrlParameter.Optional }
 
-            );
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //);
+            //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HomeController", action = "Index", id = UrlParameter.Optional }
-
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
         }
     }
 }

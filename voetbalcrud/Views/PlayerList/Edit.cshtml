@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Player</h4>
         <hr />
@@ -23,6 +23,7 @@
                 @Html.ValidationMessageFor(model => model.PlayerName, "", new { @class = "text-danger" })
             </div>
         </div>
+        @Model.PlayerName
 
         <div class="form-group">
             @Html.LabelFor(model => model.Keep, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -56,18 +57,27 @@
             </div>
         </div>
 
-        @Html.HiddenFor(model => model.ID)
+        @*@Html.HiddenFor(model => model.ID)*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" name="Edit" value="Save" class="form-control"/>
+                @*@Html.ActionLink("Edit", "EditPlayer", "PlayerList", new
+           {
+               id = Model.ID,
+               name = Model.PlayerName,
+               keep = Model.Keep,
+               midfield = Model.Midfield,
+               attack = Model.Attack,
+               defend = Model.Defend
+           }, new { @class = "btn btn-primary" })*@
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "PlayerListIndex")
 </div>
 
 @section Scripts {

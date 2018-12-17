@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using voetbalcrud.Models;
 
 namespace voetbalcrud.Views
 {
@@ -9,7 +10,9 @@ namespace voetbalcrud.Views
     {
         /*In deze berekening hebben we het aantal spelers, teamnamen, positiescores per speler en de opstelling. 
          * 
-         * Zijn de aantal spelers niet deelbaar door 2, dan wordt 1 speler reserve gezet. Dit gaat random. De speler wordt reserve gezet op de positie waar hij 5 of 4 voor heeft, in een random team.
+         * 
+         * De aantal spelers moeten geteld worden om te kunnen delen. 
+         * Zijn de aantal spelers niet deelbaar door 2, dan wordt 1 speler reserve gezet. Dit gaat random. De speler wordt reserve gezet op de positie waar hij 5 of 4 voor heeft, in een random team. 
          * 
          * Berekening 1.
          * Als er 1 speler is die het getal 5 heeft voor {positie} wordt er gekeken of 1 speler het getal 4 heeft voor {positie}. 
@@ -34,6 +37,6 @@ namespace voetbalcrud.Views
          * 
          * 
         */
-
+        
     }
 }

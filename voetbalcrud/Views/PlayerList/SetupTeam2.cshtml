@@ -1,12 +1,10 @@
 ﻿@model voetbalcrud.Models.Setup
 
 @{
-    ViewBag.Title = "Create";
-
+    ViewBag.Title = "Setup Team 2";
 }
 
-<h2>Create</h2>
-
+<h2>Setup team 2</h2>
 
 @using (Html.BeginForm())
 {
@@ -50,22 +48,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                @Html.ActionLink("Back","SetupTeam1", "PlayerList", new { @class="btn btn-primary"})
+                @Html.ActionLink("Next", "TeamName", "PlayerList", new { @class = "btn btn-primary" })
+                @*<input type="submit" name="BtnPrev" value="Back" class="btn btn-default" />
+                <input type="submit" name="BtnNext" value="Next" class="btn btn-default" />*@
             </div>
         </div>
     </div>
 }
-    
-    @*
-        Formule
-         Elke positie heeft 1 speler gereserveerd. Aantal spelers - 4 = overige spelers. Is het opgegeven getal 0 dan wordt er opnieuw gevraagd naar het getal. Is het getal
-         hoger dan de overige spelers? Dan wordt er opnieuw gevraagd naar het getal. Is het geval tussen de 1 en de overige spelers? Dan is dat goed.*@
 
-    
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

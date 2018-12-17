@@ -21,9 +21,9 @@ namespace voetbalcrud.Models
         }
     
         public int ID { get; set; }
-        public Nullable<int> AmountDefend { get; set; }
-        public Nullable<int> AmountAttack { get; set; }
-        public Nullable<int> AmountMidfield { get; set; }
+        public int AmountDefend { get; set; }
+        public int AmountAttack { get; set; }
+        public int AmountMidfield { get; set; }
         public int AmountKeep { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
