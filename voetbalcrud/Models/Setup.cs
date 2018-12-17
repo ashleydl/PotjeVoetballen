@@ -18,6 +18,7 @@ namespace voetbalcrud.Models
         public Setup()
         {
             this.Team = new HashSet<Team>();
+            this.TeamPartition = new HashSet<TeamPartition>();
         }
     
         public int ID { get; set; }
@@ -28,5 +29,7 @@ namespace voetbalcrud.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Team> Team { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamPartition> TeamPartition { get; set; }
     }
 }

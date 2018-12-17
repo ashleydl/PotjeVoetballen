@@ -7,45 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace voetbalcrud.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-
-   
+    
     public partial class Player
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Player()
-        {
-            this.Team = new HashSet<Team>();
-        }
-        
-       
         public int ID { get; set; }
-
-        [Range(0, 5)]
         public int Keep { get; set; }
-
-        [Range(0, 5)]
         public int Defend { get; set; }
-
-        [Range(0, 5)]
         public int Attack { get; set; }
-
-        [Range(0, 5)]
         public int Midfield { get; set; }
-
-        [StringLength(15, MinimumLength = 2)]
         public string PlayerName { get; set; }
-
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team> Team { get; set; }
     }
 }
-
- 

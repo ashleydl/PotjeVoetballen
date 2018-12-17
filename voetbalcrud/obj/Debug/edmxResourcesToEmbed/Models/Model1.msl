@@ -13,6 +13,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Position">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Setup">
       <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Setup">
         <MappingFragment StoreEntitySet="Setup">
@@ -33,13 +41,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="TeamPlayer" TypeName="PotjeVoetballenDBModel.TeamPlayer" StoreEntitySet="TeamPlayer">
-      <EndProperty Name="Player">
-        <ScalarProperty Name="ID" ColumnName="PlayerID" />
-      </EndProperty>
-      <EndProperty Name="Team">
-        <ScalarProperty Name="ID" ColumnName="TeamID" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="TeamPartition">
+      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPartition">
+        <MappingFragment StoreEntitySet="TeamPartition">
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
