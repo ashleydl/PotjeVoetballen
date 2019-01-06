@@ -1,0 +1,91 @@
+﻿@model IEnumerable<voetbalcrud.Models.Player>
+
+@{
+    ViewBag.Title = "Player list Index";
+
+}
+
+<h2>Player list</h2>
+
+<div>
+    @Html.ActionLink("Create New", "Create")
+</div>
+
+
+@*using (Html.BeginForm("PlayerListIndex", "PlayerList", FormMethod.Post, new { @class = "form-horizontal" , Roles="form" }))*@
+@using (Html.BeginForm())
+ {
+    <p>
+        <div class="col-md-offset-6 col-md-10">
+            Zoek op naam: @Html.TextBox("SearchString")
+            <input type="submit" name="Zoek" value="Search" class="btn btn-default" />
+        </div>
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Keep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Midfield)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attack)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Defend)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.Keep)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Midfield)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Attack)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Defend)
+            </th>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+        }
+
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @*ActionLink("Next", "PlayerListIndex", new { btnNext = "true" })*@
+            @*<input type="submit" name="BtnNext" id="BtnNext" value="Volgende" class="btn btn-primary" />*@
+
+
+            @Html.ActionLink("Next", "SetupTeam1", "PlayerList", new { @class="btn btn-primary"})
+            
+            @*<a href="@Url.Action("SetupPage","PlayerList")" class="btn btn-primary">Next</a>*@
+        </div>
+    </div>
+}
+
+
+
+
+
+
+

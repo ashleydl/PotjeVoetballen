@@ -14,6 +14,7 @@ namespace voetbalcrud.Models
     
     public partial class Team
     {
+<<<<<<< HEAD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Team()
         {
@@ -27,5 +28,13 @@ namespace voetbalcrud.Models
         public virtual Setup Setup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeamPlayer> TeamPlayer { get; set; }
+=======
+        public int ID { get; set; }
+        public string TeamName { get; set; }
+        public Nullable<int> Attack { get; set; }
+        public Nullable<int> Defend { get; set; }
+        public Nullable<int> Keep { get; set; }
+        public Nullable<int> Midfield { get; set; }
+>>>>>>> otherbranch
     }
 }

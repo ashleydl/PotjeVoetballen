@@ -1,0 +1,74 @@
+﻿@model voetbalcrud.Models.Team
+
+@{
+    ViewBag.Title = "SetupTeam2";
+}
+
+<h2>SetupTeam2</h2>
+
+@using (Html.BeginForm())
+{ 
+    <div class="form-horizontal">
+        <h4>Team</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @****** TeamName ******@
+        <div class="form-group">
+            @Html.LabelFor(model => model.TeamName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TeamName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TeamName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @***** Attack *****@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Attack, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Attack, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "5" } })
+                @Html.ValidationMessageFor(model => model.Attack, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @****** Defend ******@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Defend, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Defend, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "5" } })
+                @Html.ValidationMessageFor(model => model.Defend, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @****** Keep ******@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Keep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Keep, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "1" } })
+                @Html.ValidationMessageFor(model => model.Keep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Midfield, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Midfield, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "5" } })
+                @Html.ValidationMessageFor(model => model.Midfield, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Back", "SetupTeam1", "PlayerList", new { @class = "btn btn-primary" })
+
+
+                <input type="submit" name="BtnNext" value="Next" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+    

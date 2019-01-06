@@ -23,7 +23,6 @@ namespace voetbalcrud.Controllers
 
         public ActionResult Spelers()
         {
-
             return View();
         }
 
@@ -33,11 +32,7 @@ namespace voetbalcrud.Controllers
             return View();
         }
 
-        public ActionResult SetPosition()
-        {
-
-            return View();
-        }
+     
 
 
     }

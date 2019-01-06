@@ -5,6 +5,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+<<<<<<< HEAD
     <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="TeamPlayer" Relationship="Self.FK_TeamPlayer_Player" FromRole="Player" ToRole="TeamPlayer" />
   </EntityType>
@@ -15,10 +16,18 @@
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="SetupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Team" Relationship="Self.FK_Team_Setup" FromRole="Setup" ToRole="Team" />
+=======
+    <Property Name="Keep" Type="Int32" Nullable="false" />
+    <Property Name="Defend" Type="Int32" Nullable="false" />
+    <Property Name="Attack" Type="Int32" Nullable="false" />
+    <Property Name="Midfield" Type="Int32" Nullable="false" />
+    <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+>>>>>>> otherbranch
   </EntityType>
   <EntityType Name="Team">
     <Key>
       <PropertyRef Name="ID" />
+<<<<<<< HEAD
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="SetupID" Type="Int32" Nullable="false" />
@@ -91,5 +100,37 @@
       <End Role="Team" EntitySet="Team" />
       <End Role="TeamPlayer" EntitySet="TeamPlayer" />
     </AssociationSet>
+=======
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attack" Type="Int32" />
+    <Property Name="Defend" Type="Int32" />
+    <Property Name="Keep" Type="Int32" />
+    <Property Name="Midfield" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="PVMEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Player" EntityType="Self.Player" />
+    <EntitySet Name="Team" EntityType="Self.Team" />
+    <EntitySet Name="sysdiagrams" EntityType="PotjeVoetballenDBModel.sysdiagrams" />
+    <EntitySet Name="Position" EntityType="PotjeVoetballenDBModel.Position" />
+>>>>>>> otherbranch
   </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

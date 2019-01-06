@@ -4,6 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD
       <Diagram DiagramId="5dd4a4ce9d15414b924a5f9fcafe1edb" Name="Diagram1">
         <EntityTypeShape EntityType="PotjeVoetballenDBModel.Player" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PotjeVoetballenDBModel.Setup" Width="1.5" PointX="0.625" PointY="2.125" IsExpanded="true" />
@@ -13,6 +14,13 @@
         <AssociationConnector Association="PotjeVoetballenDBModel.FK_Team_Setup" ManuallyRouted="false" />
         <AssociationConnector Association="PotjeVoetballenDBModel.FK_TeamPlayer_Team" ManuallyRouted="false" />
       </Diagram>
+=======
+      <Diagram DiagramId="631af391b27a41b39ef2e819c1608ef0" Name="Diagram1">
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Player" Width="1.5" PointX="5.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Team" Width="1.5" PointX="2.75" PointY="4.125" />
+        <EntityTypeShape EntityType="PotjeVoetballenDBModel.Position" Width="1.5" PointX="0.75" PointY="0.75" />
+        </Diagram>
+>>>>>>> otherbranch
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

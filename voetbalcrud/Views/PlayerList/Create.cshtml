@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Create";
+<<<<<<< HEAD
+=======
+   
+>>>>>>> otherbranch
 }
 
 <h2>Create</h2>
@@ -21,6 +25,8 @@
                 @Html.ValidationMessageFor(model => model.PlayerName, "", new { @class = "text-danger" })
             </div>
         </div>
+
+ 
 
         <div class="form-group">
             @Html.LabelFor(model => model.Keep, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -62,6 +68,11 @@
     </div>
 }
 
+<<<<<<< HEAD
+=======
+@*De posities moeten een cijfer tussen de 1 en 5 zijn.*@
+
+>>>>>>> otherbranch
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "PlayerListIndex")
 </div>

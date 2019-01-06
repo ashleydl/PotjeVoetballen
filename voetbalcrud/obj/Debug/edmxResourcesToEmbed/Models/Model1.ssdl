@@ -4,6 +4,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
+<<<<<<< HEAD
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PlayerName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
@@ -13,10 +14,36 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="SetupName" Type="varchar" MaxLength="50" Nullable="false" />
+=======
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Keep" Type="int" Nullable="false" />
+    <Property Name="Defend" Type="int" Nullable="false" />
+    <Property Name="Attack" Type="int" Nullable="false" />
+    <Property Name="Midfield" Type="int" Nullable="false" />
+    <Property Name="PlayerName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+>>>>>>> otherbranch
   </EntityType>
   <EntityType Name="Team">
     <Key>
       <PropertyRef Name="ID" />
+<<<<<<< HEAD
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="SetupID" Type="int" Nullable="false" />
@@ -85,5 +112,20 @@
       <End Role="Team" EntitySet="Team" />
       <End Role="TeamPlayer" EntitySet="TeamPlayer" />
     </AssociationSet>
+=======
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Attack" Type="int" />
+    <Property Name="Defend" Type="int" />
+    <Property Name="Keep" Type="int" />
+    <Property Name="Midfield" Type="int" />
+  </EntityType>
+  <EntityContainer Name="PotjeVoetballenDBModelStoreContainer">
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+>>>>>>> otherbranch
   </EntityContainer>
 </Schema>
