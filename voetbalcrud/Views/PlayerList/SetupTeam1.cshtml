@@ -1,61 +1,78 @@
-﻿@model voetbalcrud.Models.Setup
+﻿@model voetbalcrud.Models.Team
 
 @{
-    ViewBag.Title = "Setup Team 1";
+    ViewBag.Title = "SetupTeam1";
 }
 
-<h2>Setup team 1</h2>
+<h2>SetupTeam1</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Setup</h4>
+        <h4>Team</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.AmountDefend, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountDefend, new { htmlAttributes = new { @class = "form-control", @min="0"} })
-                @Html.ValidationMessageFor(model => model.AmountDefend, "", new { @class = "text-danger" })
-            </div>            
-        </div>
 
+        @****** TeamName ******@
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountAttack, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TeamName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountAttack, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
-                @Html.ValidationMessageFor(model => model.AmountAttack, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TeamName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TeamName, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        @***** Attack *****@
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountMidfield, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Attack, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountMidfield, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
-                @Html.ValidationMessageFor(model => model.AmountMidfield, "", new { @class = "text-danger", @min = "0" })
+                @Html.EditorFor(model => model.Attack, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "5" } })
+                @Html.ValidationMessageFor(model => model.Attack, "", new { @class = "text-danger" })
             </div>
         </div>
 
+       
+
+        @****** Defend ******@
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountKeep, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Defend, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountKeep, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountKeep, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Defend, new { htmlAttributes = new { @class = "form-control", @min="0", @max="5" } })
+                @Html.ValidationMessageFor(model => model.Defend, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @****** Keep ******@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Keep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Keep, new { htmlAttributes = new { @class = "form-control", @min="0", @max="1"} })
+                @Html.ValidationMessageFor(model => model.Keep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @****** Midfield ******@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Midfield, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Midfield, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "5" } })
+                @Html.ValidationMessageFor(model => model.Midfield, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 @Html.ActionLink("Back", "PlayerListIndex", "PlayerList", new { @class = "btn btn-primary" })
-                @*@Html.ActionLink("Next", "SetupTeam1", "PlayerList", new { @class = "btn btn-primary" })*@               
-                <input type="submit" value="Create" class="btn btn-default" />
-               
-        
+
+
+                <input type="submit" name="BtnNext" value="Next" class="btn btn-default" />
             </div>
         </div>
-    </div>
+        </div>
 }
 
-
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

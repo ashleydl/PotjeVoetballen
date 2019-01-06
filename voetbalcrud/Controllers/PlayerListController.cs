@@ -41,87 +41,26 @@ namespace voetbalcrud.Controllers
             }
         }
         
+        //SetupPage 1
         [HttpGet]
-        public ActionResult SetupTeam1(/*string BtnNext, string BtnPrev, Setup setup*/)
+        public ActionResult SetupTeam1()
         {
             return View();
 
-            //if (btnnext != null)
-            //{
-            //    try
-            //    {
-            //        pvmentities1 db = new pvmentities1();
-            //        setup set = new setup
-            //        {
-            //            amountattack = setup.amountattack,
-            //            amountdefend = setup.amountdefend,
-            //            amountkeep = setup.amountkeep,
-            //            amountmidfield = setup.amountmidfield
-            //        };
-
-            //        db.setup.add(set);
-            //        db.savechanges();
-
-            //        int latestsetid = set.id;
-
-            //    }
-            //    catch
-            //    {
-            //        return redirecttoaction("setuppage");
-            //    }
-
-            //    if (btnnext != null)
-            //    {
-            //        return redirecttoaction("teamname");
-            //    }
-            //    return view();
-            //}
-
-            //if (btnprev != null)
-            //{
-            //    return redirecttoaction("index");
-            //}
-            //return view();
         }
 
         [HttpPost]
-        public ActionResult SetupTeam1([Bind(Include = "AmountKeep, AmountMidfield, AmountAttack, AmountDefend")] Setup setup)
+        public ActionResult SetupTeam1([Bind(Include = "Teamname, Keep, Midfield, Attack, Defend")] Team team)
         {
+
             try
             {
                 using (PVMEntities1 db = new PVMEntities1())
                 {
-                    db.Setup.Add(setup);
+                    db.Team.Add(team);
                     db.SaveChanges();
                 }
                 return RedirectToAction("SetupTeam2");
-            }
-            catch (Exception)
-            {
-                return View();
-            }
-
-        }
-
-
-        [HttpGet]
-        public ActionResult SetupTeam2()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult SetupTeam2([Bind(Include = "AmountKeep, AmountMidfield, AmountAttack, AmountDefend")] Setup setup)
-        {
-
-            try
-            {
-                using (PVMEntities1 db = new PVMEntities1())
-                {
-                    db.Setup.Add(setup);
-                    db.SaveChanges();
-                }
-                return RedirectToAction("TeamName");
             }
             catch (Exception ex)
             {
@@ -131,87 +70,9 @@ namespace voetbalcrud.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult TeamName()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult TeamName([Bind(Include = "TeamName, Teamname, SetupId")] Team team)
-        {
-            try
-            {
-                using (PVMEntities1 db = new PVMEntities1())
-                {
-                    db.Team.Add(team);
-                    db.SaveChanges();
-                }
-               return RedirectToAction("ResultPage");
-            }
-            catch (Exception)
-            {
-                return View();
-            }
-        }
-
-        public ActionResult ResultPage()
-        {
-            return View();
-            // Select players making calculation.
-
-            //ViewBag.Team1 = getTeam1(); // return IEnumerable<Player>;
-            //ViewBag.Team2 = getTeam2(); // return IEnumerable<Player>;
-
-            /*
-         * Het aantal spelers moeten geteld worden om te kunnen delen. 
-         * if players cannot be devide by 2, set 1 player random as extra.
-         * 
-         * Calculation 1.
-         * Search for the players who have the number 5 for keep. If more than 2 persons have keep, choose 2 persons randomly for the teams. If only 1 person have 5
-         * for keep, search for players who have the number 4 and choose randomly if there are more. If there's no person with 4, search for 3, and choose randomly if there are more,
-         * Same for 2 and 1. 
-         * 
-         * if(player.keep = 5)
-         * {
-         *  db.Team.Add(player)
-         *  db.SaveChanges();
-         *  (player can't be choosen now for other positions)
-         * }
-         * 
-         * 
-         * 
-         * 
-         * 
-         * In de database staat aangegeven hoeveel spelers per team per positie zijn ingedeeld. Na keep (keep heeft standaard 1) wordt er gekeken of er nog een positie is die 1 speler gebruikt. Als er meer posities zijn
-         * die 1 speler gebruiken wordt er daarvan een random positie gekozen om als eerst mee te zoeken naar een speler. 
-         * De naam van de positie wordt gebruikt om door de spelers heen te zoeken naar het getal 5. Hier wordt berekening 1 gebruikt.
-         * 
-         * Keep always has one player, not more. So now we're looking for another position with 1 player. If there is a position with 1 player we use calculation 1. 
-         * After that we do the same for 2, 3, 4, 5. 
-         * 
-        */
 
 
-        }
 
-        // GET: PlayerList/Details/5
-        public ActionResult Details(int id)
-        {
-            using (PVMEntities1 db = new PVMEntities1())
-            {
-                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
-            }
-
-        }
-
-        // GET: PlayerList/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: PlayerList/Create
         [HttpPost]
         public ActionResult Create(Player player)
         {
@@ -230,6 +91,87 @@ namespace voetbalcrud.Controllers
                 return View();
             }
         }
+
+
+
+        //SetupPage 2
+        [HttpGet]
+        public ActionResult SetupTeam2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SetupTeam2([Bind(Include = "TeamName, Keep, Midfield, Attack, Defend")] Team team)
+        {
+
+            try
+            {
+                using (PVMEntities1 db = new PVMEntities1())
+                {
+                    db.Team.Add(team);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("ResultPage");
+            }
+            catch (Exception ex)
+            {
+                var exception = ex;
+                return View();
+            }
+
+        }
+
+
+        public ActionResult ResultPage()
+        {
+            return View();
+            // Select players making calculation.
+
+            //ViewBag.Team1 = getTeam1(); // return IEnumerable<Player>;
+            //ViewBag.Team2 = getTeam2(); // return IEnumerable<Player>;
+
+   
+     
+
+
+        }
+
+        // GET: PlayerList/Details/5
+        public ActionResult Details(int id)
+        {
+            using (PVMEntities1 db = new PVMEntities1())
+            {
+                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); 
+            }
+
+        }
+
+        // GET: PlayerList/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //// POST: PlayerList/Create
+        //[HttpPost]
+        //public ActionResult Create(Player player)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
+        //        using (PVMEntities1 db = new PVMEntities1())
+        //        {
+        //            db.Player.Add(player);
+        //            db.SaveChanges();
+        //        }
+        //        return RedirectToAction("PlayerListIndex");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
 
         // GET: PlayerList/Edit/5
@@ -260,13 +202,7 @@ namespace voetbalcrud.Controllers
                 return View();
             }
 
-            //using (PVMEntities1 db = new PVMEntities1())
-            //{
-            //    return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
-            //}
-
-            //Player player = player.GetPlayer(id);
-            //return View(player);
+          
         }
 
 
@@ -331,26 +267,6 @@ namespace voetbalcrud.Controllers
             
         }
 
-        // POST: PlayerList/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id)
-        //{
-        //    try
-        //    {
-        //        using (PVMEntities1 db = new PVMEntities1())
-        //        {                    
-        //            Player player = db.Player.Where(x => x. ID == id).FirstOrDefault();
-        //            db.Player.Remove(player);
-        //            db.SaveChanges();
-        //        }
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
 
 

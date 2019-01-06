@@ -15,9 +15,10 @@ namespace voetbalcrud.Models
     public partial class Team
     {
         public int ID { get; set; }
-        public int SetupID { get; set; }
         public string TeamName { get; set; }
-    
-        public virtual Setup Setup { get; set; }
+        public Nullable<int> Attack { get; set; }
+        public Nullable<int> Defend { get; set; }
+        public Nullable<int> Keep { get; set; }
+        public Nullable<int> Midfield { get; set; }
     }
 }

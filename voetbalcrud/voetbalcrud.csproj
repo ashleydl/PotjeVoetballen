@@ -178,13 +178,10 @@
     <Compile Include="Models\Position.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Setup.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TeamPartition.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="PlayersService.asmx.cs">
@@ -397,9 +394,9 @@
     <Content Include="Views\PlayerList\Edit.cshtml" />
     <Content Include="Views\PlayerList\Delete.cshtml" />
     <Content Include="Views\PlayerList\Create.cshtml" />
-    <Content Include="Views\PlayerList\SetupTeam1.cshtml" />
     <Content Include="Views\PlayerList\ResultPage.cshtml" />
     <Content Include="Views\PlayerList\TeamName.cshtml" />
+    <Content Include="Views\PlayerList\SetupTeam1.cshtml" />
     <Content Include="Views\PlayerList\SetupTeam2.cshtml" />
   </ItemGroup>
   <ItemGroup>

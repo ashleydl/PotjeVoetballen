@@ -11,99 +11,38 @@
     <Property Name="Midfield" Type="Int32" Nullable="false" />
     <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attack" Type="Int32" />
+    <Property Name="Defend" Type="Int32" />
+    <Property Name="Keep" Type="Int32" />
+    <Property Name="Midfield" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="PVMEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Player" EntityType="Self.Player" />
+    <EntitySet Name="Team" EntityType="Self.Team" />
+    <EntitySet Name="sysdiagrams" EntityType="PotjeVoetballenDBModel.sysdiagrams" />
+    <EntitySet Name="Position" EntityType="PotjeVoetballenDBModel.Position" />
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="Position">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TeamPartition" Relationship="Self.FK_TeamPartition_Position" FromRole="Position" ToRole="TeamPartition" />
   </EntityType>
-  <EntityType Name="Setup">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="AmountDefend" Type="Int32" Nullable="false" />
-    <Property Name="AmountAttack" Type="Int32" Nullable="false" />
-    <Property Name="AmountMidfield" Type="Int32" Nullable="false" />
-    <Property Name="AmountKeep" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Team" Relationship="Self.FK_Team_Setup" FromRole="Setup" ToRole="Team" />
-    <NavigationProperty Name="TeamPartition" Relationship="Self.FK_TeamPartition_Setup" FromRole="Setup" ToRole="TeamPartition" />
-  </EntityType>
-  <EntityType Name="Team">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="SetupID" Type="Int32" Nullable="false" />
-    <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Setup" Relationship="Self.FK_Team_Setup" FromRole="Team" ToRole="Setup" />
-  </EntityType>
-  <EntityType Name="TeamPartition">
-    <Key>
-      <PropertyRef Name="PositionID" />
-      <PropertyRef Name="SetupID" />
-    </Key>
-    <Property Name="PositionID" Type="Int32" Nullable="false" />
-    <Property Name="SetupID" Type="Int32" Nullable="false" />
-    <Property Name="Amount" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Position" Relationship="Self.FK_TeamPartition_Position" FromRole="TeamPartition" ToRole="Position" />
-    <NavigationProperty Name="Setup" Relationship="Self.FK_TeamPartition_Setup" FromRole="TeamPartition" ToRole="Setup" />
-  </EntityType>
-  <Association Name="FK_TeamPartition_Position">
-    <End Role="Position" Type="Self.Position" Multiplicity="1" />
-    <End Role="TeamPartition" Type="Self.TeamPartition" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Position">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TeamPartition">
-        <PropertyRef Name="PositionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Team_Setup">
-    <End Role="Setup" Type="Self.Setup" Multiplicity="1" />
-    <End Role="Team" Type="Self.Team" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Setup">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Team">
-        <PropertyRef Name="SetupID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPartition_Setup">
-    <End Role="Setup" Type="Self.Setup" Multiplicity="1" />
-    <End Role="TeamPartition" Type="Self.TeamPartition" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Setup">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TeamPartition">
-        <PropertyRef Name="SetupID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="PVMEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Player" EntityType="Self.Player" />
-    <EntitySet Name="Position" EntityType="Self.Position" />
-    <EntitySet Name="Setup" EntityType="Self.Setup" />
-    <EntitySet Name="Team" EntityType="Self.Team" />
-    <EntitySet Name="TeamPartition" EntityType="Self.TeamPartition" />
-    <AssociationSet Name="FK_TeamPartition_Position" Association="Self.FK_TeamPartition_Position">
-      <End Role="Position" EntitySet="Position" />
-      <End Role="TeamPartition" EntitySet="TeamPartition" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Team_Setup" Association="Self.FK_Team_Setup">
-      <End Role="Setup" EntitySet="Setup" />
-      <End Role="Team" EntitySet="Team" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPartition_Setup" Association="Self.FK_TeamPartition_Setup">
-      <End Role="Setup" EntitySet="Setup" />
-      <End Role="TeamPartition" EntitySet="TeamPartition" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

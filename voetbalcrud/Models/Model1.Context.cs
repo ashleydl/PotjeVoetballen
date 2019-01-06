@@ -26,9 +26,8 @@ namespace voetbalcrud.Models
         }
     
         public virtual DbSet<Player> Player { get; set; }
-        public virtual DbSet<Position> Position { get; set; }
-        public virtual DbSet<Setup> Setup { get; set; }
         public virtual DbSet<Team> Team { get; set; }
-        public virtual DbSet<TeamPartition> TeamPartition { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Position> Position { get; set; }
     }
 }
