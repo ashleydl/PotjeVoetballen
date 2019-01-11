@@ -15,21 +15,6 @@ namespace voetbalcrud.Controllers
         {
             using (PVMEntities1 db = new PVMEntities1())
             {
-<<<<<<< HEAD
-                return View(db.Player.ToList());
-            }
-
-        }
-
-        // GET: PlayerList/Details/5
-        public ActionResult Details(int id)
-        {
-            using (PVMEntities1 db = new PVMEntities1())
-            {
-                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
-            }
-
-=======
 
                 ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             
@@ -54,7 +39,6 @@ namespace voetbalcrud.Controllers
 
 
             }
->>>>>>> otherbranch
         }
         
         //SetupPage 1
@@ -71,20 +55,12 @@ namespace voetbalcrud.Controllers
 
             try
             {
-<<<<<<< HEAD
-                // TODO: Add insert logic here
-=======
->>>>>>> otherbranch
                 using (PVMEntities1 db = new PVMEntities1())
                 {
                     db.Team.Add(team);
                     db.SaveChanges();
                 }
-<<<<<<< HEAD
-                return RedirectToAction("Index");
-=======
                 return RedirectToAction("SetupTeam2");
->>>>>>> otherbranch
             }
             catch (Exception ex)
             {
@@ -94,15 +70,6 @@ namespace voetbalcrud.Controllers
 
         }
 
-<<<<<<< HEAD
-        // GET: PlayerList/Edit/5
-        public ActionResult Edit(int id)
-        {
-            using (PVMEntities1 db = new PVMEntities1())
-            {
-                return View(db.Player.Where(x => x.ID == id).FirstOrDefault()); ;
-=======
->>>>>>> otherbranch
 
 
 
@@ -111,22 +78,13 @@ namespace voetbalcrud.Controllers
         {
             try
             {
-<<<<<<< HEAD
-                // TODO: Add update logic here
-=======
                 // TODO: Add insert logic here
->>>>>>> otherbranch
                 using (PVMEntities1 db = new PVMEntities1())
                 {
                     db.Player.Add(player);
                     db.SaveChanges();
                 }
-<<<<<<< HEAD
-
-                return RedirectToAction("Index");
-=======
                 return RedirectToAction("PlayerListIndex");
->>>>>>> otherbranch
             }
             catch
             {
@@ -151,19 +109,10 @@ namespace voetbalcrud.Controllers
             {
                 using (PVMEntities1 db = new PVMEntities1())
                 {
-<<<<<<< HEAD
-                    player = db.Player.Where(x => x.ID == id).FirstOrDefault();
-                    db.Player.Remove(player);
-                    db.SaveChanges();
-                }
-
-                return RedirectToAction("Index");
-=======
                     db.Team.Add(team);
                     db.SaveChanges();
                 }
                 return RedirectToAction("ResultPage");
->>>>>>> otherbranch
             }
             catch (Exception ex)
             {
@@ -204,11 +153,6 @@ namespace voetbalcrud.Controllers
             return View();
         }
 
-<<<<<<< HEAD
-       
-    }
-}
-=======
         //// POST: PlayerList/Create
         //[HttpPost]
         //public ActionResult Create(Player player)
@@ -332,4 +276,3 @@ namespace voetbalcrud.Controllers
 
 
     }
->>>>>>> otherbranch

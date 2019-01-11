@@ -18,15 +18,41 @@
             @Html.DisplayFor(model => model.PlayerName)
         </dd>
 
-      
+        <dt>
+            @Html.DisplayNameFor(model => model.Keep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Midfield)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Midfield)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Defend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Defend)
+        </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-<<<<<<< HEAD
-    @Html.ActionLink("Back to List", "Index")
-=======
     @Html.ActionLink("Back to List", "PlayerListIndex")
->>>>>>> otherbranch
 </p>

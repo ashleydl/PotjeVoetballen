@@ -5,51 +5,26 @@
       <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Player">
         <MappingFragment StoreEntitySet="Player">
           <ScalarProperty Name="ID" ColumnName="ID" />
-<<<<<<< HEAD
-          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Setup">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Setup">
-        <MappingFragment StoreEntitySet="Setup">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SetupName" ColumnName="SetupName" />
-=======
           <ScalarProperty Name="Keep" ColumnName="Keep" />
           <ScalarProperty Name="Defend" ColumnName="Defend" />
           <ScalarProperty Name="Attack" ColumnName="Attack" />
           <ScalarProperty Name="Midfield" ColumnName="Midfield" />
           <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
->>>>>>> otherbranch
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Team">
       <EntityTypeMapping TypeName="PotjeVoetballenDBModel.Team">
         <MappingFragment StoreEntitySet="Team">
-<<<<<<< HEAD
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SetupID" ColumnName="SetupID" />
-=======
           <ScalarProperty Name="Midfield" ColumnName="Midfield" />
           <ScalarProperty Name="Keep" ColumnName="Keep" />
           <ScalarProperty Name="Defend" ColumnName="Defend" />
           <ScalarProperty Name="Attack" ColumnName="Attack" />
           <ScalarProperty Name="ID" ColumnName="ID" />
->>>>>>> otherbranch
           <ScalarProperty Name="TeamName" ColumnName="TeamName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-<<<<<<< HEAD
-    <EntitySetMapping Name="TeamPlayer">
-      <EntityTypeMapping TypeName="PotjeVoetballenDBModel.TeamPlayer">
-        <MappingFragment StoreEntitySet="TeamPlayer">
-          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
-          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-=======
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="PotjeVoetballenDBModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -66,7 +41,6 @@
         <MappingFragment StoreEntitySet="Position">
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ID" ColumnName="ID" />
->>>>>>> otherbranch
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

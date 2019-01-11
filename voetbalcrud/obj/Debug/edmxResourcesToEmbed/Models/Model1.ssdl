@@ -4,17 +4,6 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-<<<<<<< HEAD
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PlayerName" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Setup">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="SetupName" Type="varchar" MaxLength="50" Nullable="false" />
-=======
     <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Keep" Type="int" Nullable="false" />
     <Property Name="Defend" Type="int" Nullable="false" />
@@ -38,81 +27,10 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
->>>>>>> otherbranch
   </EntityType>
   <EntityType Name="Team">
     <Key>
       <PropertyRef Name="ID" />
-<<<<<<< HEAD
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="SetupID" Type="int" Nullable="false" />
-    <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TeamPlayer">
-    <Key>
-      <PropertyRef Name="TeamID" />
-      <PropertyRef Name="PlayerID" />
-      <PropertyRef Name="PositionID" />
-    </Key>
-    <Property Name="TeamID" Type="int" Nullable="false" />
-    <Property Name="PlayerID" Type="int" Nullable="false" />
-    <Property Name="PositionID" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Team_Setup">
-    <End Role="Setup" Type="Self.Setup" Multiplicity="1" />
-    <End Role="Team" Type="Self.Team" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Setup">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Team">
-        <PropertyRef Name="SetupID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPlayer_Player">
-    <End Role="Player" Type="Self.Player" Multiplicity="1" />
-    <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Player">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TeamPlayer">
-        <PropertyRef Name="PlayerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeamPlayer_Team">
-    <End Role="Team" Type="Self.Team" Multiplicity="1" />
-    <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Team">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TeamPlayer">
-        <PropertyRef Name="TeamID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="PotjeVoetballenDBModelStoreContainer">
-    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Setup" EntityType="Self.Setup" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TeamPlayer" EntityType="Self.TeamPlayer" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Team_Setup" Association="Self.FK_Team_Setup">
-      <End Role="Setup" EntitySet="Setup" />
-      <End Role="Team" EntitySet="Team" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPlayer_Player" Association="Self.FK_TeamPlayer_Player">
-      <End Role="Player" EntitySet="Player" />
-      <End Role="TeamPlayer" EntitySet="TeamPlayer" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeamPlayer_Team" Association="Self.FK_TeamPlayer_Team">
-      <End Role="Team" EntitySet="Team" />
-      <End Role="TeamPlayer" EntitySet="TeamPlayer" />
-    </AssociationSet>
-=======
     </Key>
     <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -126,6 +44,5 @@
     <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
->>>>>>> otherbranch
   </EntityContainer>
 </Schema>
